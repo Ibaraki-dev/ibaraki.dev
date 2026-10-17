@@ -100,3 +100,15 @@ Deployment2482dd22-6d68-4778-add5-22771f0314f0.
 2026-10-17 dedicated anti-harassment page: connpass406885 policy text, seven prohibited-conduct bullets, organizer/contact link. Linked from homepage FAQ, guidelines and global footer; added to sitemap and SEO checks. Astro check0diagnostics, build passed, six public pages metadata validation passed. Desktop/mobile390px inspected; no overflow; heading wraps at semantic word boundary.
 
 2026-10-17 guidelines tone: conversational opening, headings and participation/photo-sharing/contact copy; policy itself unchanged. Desktop and390px mobile inspected, no overflow. Astro check clean; build and all6page SEO checks passed.
+
+## D1レポート連携 — 2026-10-17
+
+- Worker version: `2ea4882e-375e-4170-9cb4-47102de80628`。毎時35分のCron、既存Bot D1、公開用D1、Workers AIを接続して配信。
+- 22テスト成功。SQLite上の実SQLで対応付け、同じ日の別参加者の除外、重複、非公開、編集・削除、再試行、取り下げ、リース奪取、connpass検証を確認。
+- Astro check / Worker TypeScript check成功。ビルド成功。既存WebGLの大きいバンドル警告のみ。SEOチェック7ページ成功。
+- Workers AIはQwen3のJSON Schema出力で、架空のAstro/TypeScript/SQLiteの作業記録から生成してローカルD1へ保存。本文と予定・実績の分離を目視確認。架空レポートを本番へ入れていない。
+- ローカルHTTP検証：ページ・canonical・OGP URL・サイトマップ・非公開レポート404・POST405・公開イベントAPIを確認。
+- ブラウザ：レポート詳細のダーク/ライト、390px幅、イベント検索からレポートへの導線を確認。
+- 本番：公開イベント9件、公開レポート0件の初期待機状態。初回は2026-10-17開催終了後18:35以降。過去分の公開なし。
+- connpass APIキー未登録のため、本番のAPI取得は未検証・未有効。モックによる成功/失敗は検証済み。
+- Botのコード・本番DBのスキーマやデータは変更していない。公開側の新規D1にのみマイグレーションを適用。

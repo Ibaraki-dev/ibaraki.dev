@@ -13,3 +13,6 @@ output/
 docs/design/*
 !docs/design/og-source/
 .DS_Store
+
+.dev.vars*
+worker-configuration.d.ts

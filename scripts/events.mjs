@@ -2,7 +2,7 @@ export const SUBDOMAIN = 'mito-web-engineer';
 export function normalizeEvent(e) {
   if (!Number.isSafeInteger(e.id) || e.id < 1 || typeof e.title !== 'string' || !e.title.trim()) throw new Error('Invalid event identity');
   const url = new URL(e.url);
-  if (url.protocol !== 'https:' || ![`${SUBDOMAIN}.connpass.com`, 'connpass.com'].includes(url.hostname) || !url.pathname.startsWith(`/event/${e.id}/`)) throw new Error('Invalid event URL');
+  if (url.username || url.password || url.port || url.protocol !== 'https:' || ![`${SUBDOMAIN}.connpass.com`, 'connpass.com'].includes(url.hostname) || !url.pathname.startsWith(`/event/${e.id}/`)) throw new Error('Invalid event URL');
   if (e.group?.subdomain !== SUBDOMAIN) throw new Error('Unexpected connpass group');
   if (!Number.isFinite(Date.parse(e.started_at)) || !Number.isFinite(Date.parse(e.ended_at)) || Date.parse(e.ended_at) <= Date.parse(e.started_at)) throw new Error('Invalid event dates');
   return { id:e.id, title:e.title, number:e.title.match(/#([^\s]+)/)?.[1] || String(e.id), startsAt:e.started_at, endsAt:e.ended_at, url:e.url, place:e.place || '開催ページをご確認ください', tags:['もくもく会'], summary:'開催案内・公開資料は connpass をご覧ください。' };

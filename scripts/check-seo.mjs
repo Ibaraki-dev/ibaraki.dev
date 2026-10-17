@@ -1,7 +1,7 @@
 import {readFileSync,existsSync} from 'node:fs';
 import assert from 'node:assert/strict';
 const origin=(process.env.SITE_URL || 'https://ibaraki-dev-website.ba068082.workers.dev').replace(/\/$/,'');
-const paths=['/','/events/','/organizers/','/guidelines/','/anti-harassment/','/privacy/'];
+const paths=['/','/events/','/reports/','/organizers/','/guidelines/','/anti-harassment/','/privacy/'];
 const descriptions=new Set();
 for(const path of paths){
  const html=readFileSync(`dist${path}index.html`,'utf8');

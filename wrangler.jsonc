@@ -1,6 +1,51 @@
 {
   "$schema": "node_modules/wrangler/config-schema.json",
   "name": "ibaraki-dev-website",
+  "main": "worker/index.ts",
   "compatibility_date": "2026-10-17",
-  "assets": { "directory": "./dist", "not_found_handling": "404-page" }
+  "compatibility_flags": [
+    "nodejs_compat"
+  ],
+  "assets": {
+    "directory": "./dist",
+    "binding": "ASSETS",
+    "not_found_handling": "404-page",
+    "run_worker_first": [
+      "/",
+      "/events",
+      "/events/",
+      "/reports",
+      "/reports/*",
+      "/api/*",
+      "/sitemap.xml"
+    ]
+  },
+  "d1_databases": [
+    {
+      "binding": "BOT_DB",
+      "database_name": "prod-mokumoku-bot",
+      "database_id": "1e7cb02f-b32c-482a-a49f-5ce46e14b502"
+    },
+    {
+      "binding": "REPORT_DB",
+      "database_name": "ibaraki-dev-reports",
+      "database_id": "8853f4fc-62e3-4cd1-95be-81792c3403a1",
+      "migrations_dir": "migrations"
+    }
+  ],
+  "ai": {
+    "binding": "AI"
+  },
+  "vars": {
+    "REPORTS_START_DATE": "2026-10-17",
+    "SITE_URL": "https://ibaraki-dev-website.ba068082.workers.dev"
+  },
+  "triggers": {
+    "crons": [
+      "35 * * * *"
+    ]
+  },
+  "observability": {
+    "enabled": true
+  }
 }
