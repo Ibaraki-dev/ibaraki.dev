@@ -20,7 +20,7 @@ const weekday=new Intl.DateTimeFormat('en-US',{timeZone:'Asia/Tokyo',weekday:'sh
 <a class="button" id="event-link" href={latest.url}><span>connpass で参加</span><Icon name="external"/></a>
 </section>
 <section class="faq wrap" id="faq" aria-labelledby="faq-heading">
-<div class="faq-intro"><h2 id="faq-heading"><Icon name="chat"/>はじめての方へ</h2><a href="/guidelines/">参加ガイドライン <Icon name="arrow"/></a></div>
+<div class="faq-intro"><h2 id="faq-heading"><Icon name="chat"/>はじめての方へ</h2><a href="/guidelines/">参加ガイドライン <Icon name="arrow"/></a><a href="/anti-harassment/">アンチハラスメントポリシー <Icon name="arrow"/></a></div>
 <div class="faq-list">{faq.map((item,index)=><details open={index===0}><summary><span class="faq-question"><span class="faq-q" aria-hidden="true">Q</span><span>{item.question}</span></span><Icon name="plus"/></summary><div class="faq-answer"><p>{item.answer}</p>{item.examplesUrl&&<a href={item.examplesUrl}>{item.examplesUrl} <Icon name="external"/></a>}{item.examples&&<ul class="faq-examples">{item.examples.map(example=><li>{example}</li>)}</ul>}</div></details>)}</div>
 </section>
 <section class="recent wrap"><div class="recent-label"><h2><Icon name="calendar"/>過去の開催</h2><a href="/events/">すべて見る <Icon name="arrow"/></a></div><div class="recent-list">{past.map(e=><a href={e.url}><span>#{e.number} もくもく会</span><time datetime={e.startsAt}>{e.startsAt.slice(0,10).replaceAll('-','.')}</time><Icon name="external"/></a>)}</div></section>

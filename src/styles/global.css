@@ -76,3 +76,6 @@
 
 .hero h1{font-kerning:normal;letter-spacing:-.02em;font-feature-settings:"kern" 1}
 .faq-examples{margin:16px 0 0;padding-left:18px}.faq-examples li{white-space:pre-line;padding-block:8px}.faq-answer a{overflow-wrap:anywhere}
+
+.footer-links{flex-wrap:wrap;row-gap:12px}.faq-intro>a{display:flex;width:fit-content}.faq-intro>a+a{margin-top:14px}.policy-source{font-size:12px;color:var(--muted)}
+.policy-title span{display:inline-block}

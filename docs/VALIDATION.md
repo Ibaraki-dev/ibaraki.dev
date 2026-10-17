@@ -96,3 +96,5 @@ Icon theme switch: auto/light/dark buttons, selection feedback, reload persisten
 
 2026-10-17 exact Q&A + kerning: restored all7connpass406885 Q&A entries in original order and wording, including past activity examples/link; removed added preparation question and paraphrases. Hero tracking changed from-.075em to-.02em with native font kerning enabled. Astro check clean, build passed. Mobile390px hero and expanded long question verified, no overflow.
 Deployment2482dd22-6d68-4778-add5-22771f0314f0.
+
+2026-10-17 dedicated anti-harassment page: connpass406885 policy text, seven prohibited-conduct bullets, organizer/contact link. Linked from homepage FAQ, guidelines and global footer; added to sitemap and SEO checks. Astro check0diagnostics, build passed, six public pages metadata validation passed. Desktop/mobile390px inspected; no overflow; heading wraps at semantic word boundary.
