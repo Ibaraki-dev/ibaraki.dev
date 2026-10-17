@@ -98,3 +98,5 @@ Icon theme switch: auto/light/dark buttons, selection feedback, reload persisten
 Deployment2482dd22-6d68-4778-add5-22771f0314f0.
 
 2026-10-17 dedicated anti-harassment page: connpass406885 policy text, seven prohibited-conduct bullets, organizer/contact link. Linked from homepage FAQ, guidelines and global footer; added to sitemap and SEO checks. Astro check0diagnostics, build passed, six public pages metadata validation passed. Desktop/mobile390px inspected; no overflow; heading wraps at semantic word boundary.
+
+2026-10-17 guidelines tone: conversational opening, headings and participation/photo-sharing/contact copy; policy itself unchanged. Desktop and390px mobile inspected, no overflow. Astro check clean; build and all6page SEO checks passed.
