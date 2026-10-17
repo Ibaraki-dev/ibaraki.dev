@@ -50,4 +50,4 @@ node scripts/check-worker.mjs https://ibaraki-dev-website.ba068082.workers.dev
 独自ドメインへ移行するときはビルド環境変数 `SITE_URL` と `wrangler.jsonc` の `SITE_URL` を揃えます。
 
 ソース管理：[Ibaraki-dev/ibaraki.dev](https://github.com/Ibaraki-dev/ibaraki.dev)。
-GitHub Actionsは未登録（認証にworkflow scopeなし）。`docs/github-actions/deploy.yml` は将来のコード配信用テンプレートです。データの自動更新はCloudflare Cronで動作し、ActionsやGitHub書き込みトークンを必要としません。
+GitHub Actionsは未登録。`docs/github-actions/deploy.yml` は将来のコード配信用テンプレートです。データの自動更新はCloudflare Cronで動作し、ActionsやGitHub書き込みトークンを必要としません。
