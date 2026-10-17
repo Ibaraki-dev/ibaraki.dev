@@ -55,6 +55,8 @@ GitHub Actions は毎朝07:17 JSTを指定。GitHub の都合による遅延は�
 
 ## Discord / 既存 Bot 連携（設計、未接続）
 
+**更新：ユーザー指定により、指定チャンネルの「やること・やったこと」と公開資料から承認なしで自動公開する方針に変更。最新仕様は [INTEGRATION-PLAN.md](INTEGRATION-PLAN.md) を優先する。以下の承認フローは初期案の記録。**
+
 公開リポジトリ `Ibaraki-dev/mokumoku-bot` は Hono / Cloudflare / Drizzle で構成。`/checkin`、`/checkout`、`/mokumoku-start`、`/generate-event-description` がある。
 
 公開schema確認結果：
