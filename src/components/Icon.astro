@@ -1,0 +1,8 @@
+---
+import { ArrowUpRight, ArrowRight, CalendarDays, Users, MessageCircle, Clock3, MapPin, Search, FileText, ShieldCheck, CodeXml, Monitor, Sun, Moon, Plus } from '@lucide/astro';
+const icons = { external: ArrowUpRight, arrow: ArrowRight, calendar: CalendarDays, users: Users, chat: MessageCircle, clock: Clock3, location: MapPin, search: Search, document: FileText, shield: ShieldCheck, code: CodeXml, monitor: Monitor, sun: Sun, moon: Moon, plus: Plus };
+interface Props { name: keyof typeof icons; class?: string; }
+const { name, class: className = '' } = Astro.props;
+const Glyph = icons[name];
+---
+<Glyph size={18} stroke-width={1.6} class={`ui-icon ${className}`} aria-hidden="true" focusable="false" />

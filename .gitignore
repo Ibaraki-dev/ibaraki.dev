@@ -1,0 +1,15 @@
+node_modules/
+dist/
+.astro/
+.wrangler/
+.env*
+!.env.example
+private/
+test-results/
+.playwright-cli/
+output/
+
+# Local design captures (keep reproducible artwork source)
+docs/design/*
+!docs/design/og-source/
+.DS_Store

@@ -1,0 +1,12 @@
+---
+import Icon from '../components/Icon.astro';
+import Layout from '../layouts/Layout.astro';
+import {organizers} from '../data/organizers';
+---
+<Layout description="茨城のエンジニア勉強会 ibaraki.dev の主催者、Kawamata となっぱのプロフィール。X・GitHub・connpassへのリンクを掲載しています。" title="主催者" description="ibaraki.devを共同主催する、Kawamata・なっぱのプロフィールとSNS。">
+<section class="wrap page-intro organizers-intro"><p class="eyebrow">ORGANIZERS</p><h1>主催者</h1></section>
+<section class="wrap organizers-grid" aria-label="共同主催者の紹介">
+{organizers.map(person=><article class="organizer"><div class="organizer-top"><img src={person.image} alt={`${person.name}のプロフィール写真`} width="180" height="180"/><div><p class="organizer-role">{person.role}</p><h2>{person.name}</h2><p class="organizer-english" lang="en">{person.englishName}</p></div></div><p class="organizer-bio">{person.bio}</p><ul class="organizer-tech" aria-label="好きな技術">{person.technologies.map(tech=><li>{tech}</li>)}</ul><div class="organizer-links"><a href={person.x} aria-label={`${person.name}のX @${person.xHandle}`}>X <span>@{person.xHandle}</span> <Icon name="external"/></a><a href={person.github} aria-label={`${person.name}のGitHub`}><Icon name="code"/>GitHub <Icon name="external"/></a><a href={person.connpass} aria-label={`${person.name}のconnpassプロフィール`}>connpass <Icon name="external"/></a></div></article>)}
+</section>
+
+</Layout>

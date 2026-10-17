@@ -1,0 +1,104 @@
+---
+import Icon from '../components/Icon.astro';
+import '@fontsource-variable/inter';
+import '@fontsource-variable/noto-sans-jp';
+import '../styles/global.css';
+import {community} from '../data/community';
+const {title='茨城のエンジニア勉強会',description='ibaraki.dev は茨城のエンジニア勉強会。水戸を拠点に、もくもく会やLT・テックトークを開催しています。'}=Astro.props;
+const path=Astro.url.pathname;
+const canonical=new URL(path,Astro.site).href;
+const pageTitle=path==='/'?'ibaraki.dev | 茨城・水戸のエンジニア勉強会':`${title} | ibaraki.dev`;
+const image=new URL('/og/ibaraki-dev-v1.png',Astro.site).href;
+const imageAlt='ibaraki.dev — 茨城でつくる。つながる。色鮮やかなガラスのロゴと床の反射。';
+const noindex=Astro.props.noindex ?? false;
+const structuredData={
+ '@context':'https://schema.org',
+ '@graph':[
+  {'@type':'WebSite','@id':new URL('/#website',Astro.site).href,url:Astro.site!.href,name:'ibaraki.dev',description,inLanguage:'ja'},
+  {'@type':'Organization','@id':new URL('/#organization',Astro.site).href,name:'ibaraki.dev',url:Astro.site!.href,logo:new URL('/logo.png',Astro.site).href,description:'茨城・水戸を拠点とするエンジニアの勉強会。もくもく会やLT・テックトークを開催しています。',sameAs:[community.connpass,community.github]}
+ ]
+};
+---
+<!doctype html><html lang="ja"><head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<meta name="description" content={description}/>
+<meta name="theme-color" content="#101316"/>
+<meta name="robots" content={noindex?'noindex, follow':'index, follow, max-image-preview:large'}/>
+<title>{pageTitle}</title>
+<link rel="icon" type="image/svg+xml" href="/logo.svg"/>
+<link rel="canonical" href={canonical}/>
+<meta property="og:title" content={pageTitle}/>
+<meta property="og:description" content={description}/>
+<meta property="og:type" content="website"/>
+<meta property="og:url" content={canonical}/>
+<meta property="og:site_name" content="ibaraki.dev"/>
+<meta property="og:locale" content="ja_JP"/>
+<meta property="og:image" content={image}/>
+<meta property="og:image:secure_url" content={image}/>
+<meta property="og:image:type" content="image/png"/>
+<meta property="og:image:width" content="1200"/>
+<meta property="og:image:height" content="630"/>
+<meta property="og:image:alt" content={imageAlt}/>
+<meta name="twitter:card" content="summary_large_image"/>
+<meta name="twitter:title" content={pageTitle}/>
+<meta name="twitter:description" content={description}/>
+<meta name="twitter:image" content={image}/>
+<meta name="twitter:image:alt" content={imageAlt}/>
+{path==='/' && <script type="application/ld+json" set:html={JSON.stringify(structuredData).replace(/</g,'\\u003c')}/>}
+<script is:inline>
+(() => {
+  let preference = 'system';
+  try { const saved = localStorage.getItem('ibaraki-theme'); if (['light','dark','system'].includes(saved)) preference = saved; } catch {}
+  const dark = preference === 'dark' || (preference === 'system' && matchMedia('(prefers-color-scheme: dark)').matches);
+  document.documentElement.dataset.theme = dark ? 'dark' : 'light';
+  document.documentElement.dataset.themePreference = preference;
+  document.querySelector('meta[name="theme-color"]')?.setAttribute('content', dark ? '#101316' : '#fdfdfc');
+})();
+</script>
+{path === '/' && <script is:inline>
+(() => {
+  const root = document.documentElement;
+  root.dataset.loading = 'true';
+  const started = performance.now();
+  let finished = false;
+  let fallback;
+  function reveal() {
+    if (finished) return;
+    finished = true;
+    clearTimeout(fallback);
+    window.removeEventListener('logo-ready', reveal);
+    setTimeout(() => { delete root.dataset.loading; window.dispatchEvent(new Event('logo-reveal')); }, Math.max(0, 700 - (performance.now() - started)));
+  }
+  window.addEventListener('logo-ready', reveal);
+  fallback = setTimeout(reveal, 6500);
+  window.addEventListener('pageshow', (event) => { if (event.persisted) reveal(); });
+})();
+</script>}
+</head><body>
+{path === '/' && <div class="site-loader" role="status" aria-live="polite"><div class="loader-brand"><img src="/logo.svg" width="64" height="64" alt=""/><span>ibaraki.dev</span></div><div class="loader-track" aria-hidden="true"><span></span></div><p><span class="loader-caption" aria-hidden="true">LOADING</span><span class="sr-only">ibaraki.dev を読み込んでいます</span></p></div>}
+<a class="skip" href="#main">本文へスキップ</a>
+<header class="header wrap"><a class="brand" href="/" aria-label="ibaraki.dev ホーム"><img src="/logo.svg" alt="" width="29" height="29"/>ibaraki.dev</a><nav aria-label="メインナビゲーション"><a href="/events/" aria-current={path==='/events/'?'page':undefined}><Icon name="calendar"/>Event</a><a href="/organizers/" aria-current={path==='/organizers/'?'page':undefined}><Icon name="users"/>主催者</a><a href="/guidelines/" aria-current={path==='/guidelines/'?'page':undefined}><Icon name="shield"/>ガイドライン</a><a href={community.discord}><Icon name="chat"/>Discord <Icon name="external"/></a></nav><div class="theme-switch" role="group" aria-label="表示テーマ"><button type="button" data-theme-choice="system" aria-label="自動：端末の設定に合わせる" title="自動" aria-pressed="false"><Icon name="monitor"/></button><button type="button" data-theme-choice="light" aria-label="ライトモード" title="ライト" aria-pressed="false"><Icon name="sun"/></button><button type="button" data-theme-choice="dark" aria-label="ダークモード" title="ダーク" aria-pressed="false"><Icon name="moon"/></button></div></header>
+<main id="main"><slot/></main>
+<footer class="footer wrap"><a class="brand" href="/"><img src="/logo.svg" alt="" width="22" height="22"/>ibaraki.dev</a><div class="footer-links"><a href="/organizers/"><Icon name="users"/>主催者</a><a href="/guidelines/"><Icon name="shield"/>参加ガイドライン</a><a href="/privacy/"><Icon name="document"/>プライバシーポリシー</a><a href={community.github}><Icon name="code"/>GitHub <Icon name="external"/></a></div><small>© {new Date().getFullYear()} ibaraki.dev</small></footer>
+<script>
+const themeButtons = [...document.querySelectorAll<HTMLButtonElement>('[data-theme-choice]')];
+const systemTheme = matchMedia('(prefers-color-scheme: dark)');
+let preference = document.documentElement.dataset.themePreference || 'system';
+function applyTheme() {
+  const theme = preference === 'system' ? (systemTheme.matches ? 'dark' : 'light') : preference;
+  document.documentElement.dataset.theme = theme;
+  document.documentElement.dataset.themePreference = preference;
+  themeButtons.forEach(button => button.setAttribute('aria-pressed', String(button.dataset.themeChoice === preference)));
+  document.querySelector('meta[name="theme-color"]')?.setAttribute('content',theme === 'dark' ? '#101316' : '#fdfdfc');
+  window.dispatchEvent(new Event('themechange'));
+}
+themeButtons.forEach(button => button.addEventListener('click', () => {
+  preference = button.dataset.themeChoice!;
+  try { localStorage.setItem('ibaraki-theme', preference); } catch {}
+  applyTheme();
+}));
+systemTheme.addEventListener('change', () => { if (preference === 'system') applyTheme(); });
+window.addEventListener('storage', (event) => { if (event.key === 'ibaraki-theme') { preference = ['light','dark'].includes(event.newValue || '') ? event.newValue! : 'system'; applyTheme(); } });
+applyTheme();
+</script></body></html>

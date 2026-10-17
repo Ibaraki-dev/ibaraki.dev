@@ -1,0 +1,8 @@
+import {test} from 'node:test';import assert from 'node:assert/strict';
+import {normalizeEvent,mergeEvents,selectFeatured} from '../scripts/events.mjs';
+const raw={id:123,title:'Ibaraki.dev #1 もくもく会',url:'https://mito-web-engineer.connpass.com/event/123/',group:{subdomain:'mito-web-engineer'},started_at:'2026-10-17T13:00:00+09:00',ended_at:'2026-10-17T18:00:00+09:00',place:'水戸'};
+test('normalizes v2 and excludes private fields',()=>{const result=normalizeEvent({...raw,participants:['private']});assert.equal(result.id,123);assert.equal(result.number,'1');assert.equal(result.participants,undefined);});
+test('rejects unrelated groups and unsafe URLs',()=>{assert.throws(()=>normalizeEvent({...raw,group:{subdomain:'other'}}));assert.throws(()=>normalizeEvent({...raw,url:'javascript:alert(1)'}));assert.throws(()=>normalizeEvent({...raw,url:'https://example.com/event/123/'}));});
+test('rejects invalid or reversed event times',()=>{assert.throws(()=>normalizeEvent({...raw,started_at:'oops'}));assert.throws(()=>normalizeEvent({...raw,ended_at:raw.started_at}));});
+test('upserts without losing older archive records',()=>{const e=normalizeEvent(raw);const result=mergeEvents([e,{...e,id:99}], [{...e,title:'Changed'}]);assert.equal(result.length,2);assert.equal(result.find(x=>x.id===123).title,'Changed');});
+test('featured event chooses nearest ongoing/upcoming and falls back after end',()=>{const a=normalizeEvent(raw),b={...a,id:124,startsAt:'2026-11-17T13:00:00+09:00',endsAt:'2026-11-17T18:00:00+09:00'};assert.equal(selectFeatured([b,a],Date.parse('2026-10-17T14:00:00+09:00')).id,123);assert.equal(selectFeatured([a,b],Date.parse(a.endsAt)).id,124);assert.equal(selectFeatured([a,b],Date.parse('2026-12-01')).id,124);});

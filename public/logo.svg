@@ -1,0 +1,16 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 460 460" role="img" aria-labelledby="title">
+  <title id="title">ibaraki.dev</title>
+  <rect width="459" height="459" rx="44" fill="#fff"/>
+  <path fill="#2795ec" d="M42 15H138V90H16V41A26 26 0 0 1 42 15Z"/>
+  <path fill="#cc0603" d="M172.5 15H286.5V90H172.5Z"/>
+  <path fill="#6db33d" d="M321 15H418A26 26 0 0 1 444 41V90H321Z"/>
+  <path fill="#be3530" d="M16 124.5H138V207L128 237L16 201Z"/>
+  <path fill="#355f80" d="M172.5 124.5H286.5V190H172.5Z"/>
+  <path fill="#f92f24" d="M321 124.5H444.5V190H321Z"/>
+  <path fill="#02abd5" d="M16 237L115 269L107 294L16 335Z"/>
+  <path fill="#0178d6" d="M168.5 224.5H278.5L199 443.5H89Z"/>
+  <path fill="#7e51fd" d="M315 224.5H421L365 321L306 249Z"/>
+  <path fill="#0c2e20" d="M444.5 252V419L388 349Z"/>
+  <path fill="#fe9901" d="M292 287L421 443.5H235Z"/>
+  <path fill="#fcc621" d="M16 372L90.5 338.5L52 443.5H42A26 26 0 0 1 16 417.5Z"/>
+</svg>

@@ -1,0 +1,33 @@
+---
+import Icon from '../components/Icon.astro';
+import Layout from '../layouts/Layout.astro';
+import data from '../data/events.json';
+import {faq} from '../data/faq';
+import {selectFeatured} from '../../scripts/events.mjs';
+const latest=selectFeatured(data.events)!;
+const past=data.events.filter(e=>e.id!==latest.id).slice(0,3);
+const time=(v:string)=>new Intl.DateTimeFormat('ja-JP',{timeZone:'Asia/Tokyo',hour:'2-digit',minute:'2-digit'}).format(new Date(v));
+const weekday=new Intl.DateTimeFormat('en-US',{timeZone:'Asia/Tokyo',weekday:'short'}).format(new Date(latest.startsAt)).toUpperCase();
+---
+<Layout>
+<section class="hero wrap">
+<div class="hero-copy"><h1>ibaraki.dev</h1><p>茨城でつくる。つながる。</p></div>
+<div class="logo-scene" aria-label="色鮮やかなパーツが組み上がる ibaraki.dev のロゴ" role="img"><img class="logo-fallback" src="/logo.svg" width="460" height="460" alt=""/><canvas aria-hidden="true"></canvas></div>
+</section>
+<section class="featured wrap" id="next" data-event-start={latest.startsAt} data-event-end={latest.endsAt}>
+<div class="date-block"><p id="event-status">直近の開催</p><div><time datetime={latest.startsAt}>{latest.startsAt.slice(5,10).replace('-','.')}</time><span>{weekday}</span></div></div>
+<div class="event-info"><h2><span>#{latest.number}</span> もくもく会</h2><p class="event-meta"><span><Icon name="clock"/>{time(latest.startsAt)}–{time(latest.endsAt)}</span><span><Icon name="location"/>{latest.place}</span></p></div>
+<a class="button" id="event-link" href={latest.url}><span>connpass で参加</span><Icon name="external"/></a>
+</section>
+<section class="faq wrap" id="faq" aria-labelledby="faq-heading">
+<div class="faq-intro"><h2 id="faq-heading"><Icon name="chat"/>はじめての方へ</h2><a href="/guidelines/">参加ガイドライン <Icon name="arrow"/></a></div>
+<div class="faq-list">{faq.map((item,index)=><details open={index===0}><summary><span class="faq-question"><span class="faq-q" aria-hidden="true">Q</span><span>{item.question}</span></span><Icon name="plus"/></summary><div class="faq-answer"><p>{item.answer}</p>{item.examplesUrl&&<a href={item.examplesUrl}>{item.examplesUrl} <Icon name="external"/></a>}{item.examples&&<ul class="faq-examples">{item.examples.map(example=><li>{example}</li>)}</ul>}</div></details>)}</div>
+</section>
+<section class="recent wrap"><div class="recent-label"><h2><Icon name="calendar"/>過去の開催</h2><a href="/events/">すべて見る <Icon name="arrow"/></a></div><div class="recent-list">{past.map(e=><a href={e.url}><span>#{e.number} もくもく会</span><time datetime={e.startsAt}>{e.startsAt.slice(0,10).replaceAll('-','.')}</time><Icon name="external"/></a>)}</div></section>
+</Layout>
+<script>
+import '../scripts/logo-scene';
+const event=document.querySelector<HTMLElement>('[data-event-start]')!;
+function updateStatus(){const now=Date.now();const end=Date.parse(event.dataset.eventEnd!);const today=new Intl.DateTimeFormat('sv-SE',{timeZone:'Asia/Tokyo'}).format(new Date(now))===event.dataset.eventStart!.slice(0,10);document.querySelector('#event-status')!.textContent=now>=end?'直近の開催':today?'本日の開催':'次回の開催';document.querySelector('#event-link span')!.textContent=now>=end?'開催ページを見る':'connpass で参加';}
+updateStatus();setInterval(updateStatus,60000);
+</script>

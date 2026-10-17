@@ -1,0 +1,40 @@
+name: Build, sync, and deploy
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+  schedule:
+    - cron: '17 22 * * *' # 07:17 JST
+permissions:
+  contents: read
+concurrency:
+  group: website-production
+  cancel-in-progress: false
+jobs:
+  publish:
+    if: github.event_name != 'schedule' || vars.EVENTS_SYNC_ENABLED == 'true'
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '24'
+          cache: npm
+      - run: npm ci
+      - run: npm run test && npm run check
+      - name: Fetch public event information
+        if: vars.EVENTS_SYNC_ENABLED == 'true'
+        run: npm run sync:events
+        env:
+          CONNPASS_API_KEY: ${{ secrets.CONNPASS_API_KEY }}
+      - name: Build and validate metadata
+        run: npm run build && node scripts/check-seo.mjs
+        env:
+          SITE_URL: ${{ vars.SITE_URL }}
+      - name: Deploy
+        if: vars.DEPLOY_ENABLED == 'true'
+        run: npm exec wrangler deploy
+        env:
+          SITE_URL: ${{ vars.SITE_URL }}
+          CLOUDFLARE_ACCOUNT_ID: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
+          CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
