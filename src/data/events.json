@@ -1,132 +1,1554 @@
 {
-  "updatedAt": "2026-10-17T14:10:00+09:00",
-  "source": "connpass公開ページをChromeで確認（一部抜粋）",
+  "updatedAt": "2026-10-19T02:17:51.462Z",
+  "source": "connpass公開イベント一覧（全81件・2026-10-19確認）",
   "events": [
+    {
+      "id": 410329,
+      "title": "Ibaraki.dev #22 もくもく会",
+      "number": "22",
+      "startsAt": "2026-11-28T04:10:00Z",
+      "endsAt": "2026-11-28T09:00:00Z",
+      "url": "https://mito-web-engineer.connpass.com/event/410329/",
+      "place": "水戸市民会館2F スタジオ202",
+      "address": "茨城県水戸市泉町1丁目7番1号",
+      "tags": [
+        "もくもく会"
+      ],
+      "summary": "開催案内・公開資料はconnpassをご覧ください。",
+      "status": "scheduled",
+      "registrationCount": 2,
+      "capacity": 12,
+      "attendanceCheckedAt": "2026-10-19T02:17:51.462Z",
+      "thumbnailKey": "events/5cfdceb47fc56123f1e26cdefb106adcf7cadafbee0ca37998ac96f1a40279a3.png"
+    },
     {
       "id": 406885,
       "title": "Ibaraki.dev #21 もくもく会",
       "number": "21",
-      "startsAt": "2026-10-17T13:10:00+09:00",
-      "endsAt": "2026-10-17T18:00:00+09:00",
+      "startsAt": "2026-10-17T04:10:00Z",
+      "endsAt": "2026-10-17T09:00:00Z",
       "url": "https://mito-web-engineer.connpass.com/event/406885/",
       "place": "水戸市民会館 会議室305",
+      "address": "茨城県水戸市泉町1丁目7番1号",
       "tags": [
         "もくもく会",
         "LT・テックトーク"
       ],
-      "summary": "各自の開発や学習を進め、LTやテックトークで交流する会。開催案内・公開資料はconnpassをご覧ください。"
+      "summary": "開催案内・公開資料はconnpassをご覧ください。",
+      "status": "scheduled",
+      "registrationCount": 10,
+      "capacity": 10,
+      "attendanceCheckedAt": "2026-10-19T02:17:51.462Z",
+      "thumbnailKey": "events/5cfdceb47fc56123f1e26cdefb106adcf7cadafbee0ca37998ac96f1a40279a3.png"
     },
     {
       "id": 400380,
       "title": "Ibaraki.dev #20 もくもく会",
       "number": "20",
-      "startsAt": "2026-09-05T13:10:00+09:00",
-      "endsAt": "2026-09-05T18:00:00+09:00",
+      "startsAt": "2026-09-05T04:10:00Z",
+      "endsAt": "2026-09-05T09:00:00Z",
       "url": "https://mito-web-engineer.connpass.com/event/400380/",
       "place": "水戸市民会館 スタジオ201",
+      "address": "茨城県水戸市泉町1丁目7番1号",
       "tags": [
         "もくもく会",
         "LT・テックトーク"
       ],
-      "summary": "各自の開発や学習を進め、LTやテックトークで交流する会。開催案内・公開資料はconnpassをご覧ください。"
+      "summary": "開催案内・公開資料はconnpassをご覧ください。",
+      "status": "scheduled",
+      "registrationCount": 9,
+      "capacity": 10,
+      "attendanceCheckedAt": "2026-10-19T02:17:51.462Z",
+      "thumbnailKey": "events/5cfdceb47fc56123f1e26cdefb106adcf7cadafbee0ca37998ac96f1a40279a3.png"
     },
     {
       "id": 396519,
       "title": "Ibaraki.dev #19 もくもく会",
       "number": "19",
-      "startsAt": "2026-07-11T13:10:00+09:00",
-      "endsAt": "2026-07-11T18:00:00+09:00",
+      "startsAt": "2026-07-11T04:10:00Z",
+      "endsAt": "2026-07-11T09:00:00Z",
       "url": "https://mito-web-engineer.connpass.com/event/396519/",
       "place": "水戸市民会館 スタジオ201",
+      "address": "茨城県水戸市泉町1丁目7番1号",
       "tags": [
         "もくもく会",
         "LT・テックトーク"
       ],
-      "summary": "各自の開発や学習を進め、LTやテックトークで交流する会。開催案内・公開資料はconnpassをご覧ください。"
+      "summary": "開催案内・公開資料はconnpassをご覧ください。",
+      "status": "scheduled",
+      "registrationCount": 8,
+      "capacity": 10,
+      "attendanceCheckedAt": "2026-10-19T02:17:51.462Z",
+      "thumbnailKey": "events/5cfdceb47fc56123f1e26cdefb106adcf7cadafbee0ca37998ac96f1a40279a3.png"
     },
     {
       "id": 392057,
       "title": "Ibaraki.dev #18 もくもく会",
       "number": "18",
-      "startsAt": "2026-06-06T13:00:00+09:00",
-      "endsAt": "2026-06-06T18:00:00+09:00",
+      "startsAt": "2026-06-06T04:00:00Z",
+      "endsAt": "2026-06-06T09:00:00Z",
       "url": "https://mito-web-engineer.connpass.com/event/392057/",
       "place": "水戸市民会館 スタジオ201",
+      "address": "茨城県水戸市泉町1丁目7番1号",
       "tags": [
         "もくもく会",
         "LT・テックトーク"
       ],
-      "summary": "各自の開発や学習を進め、LTやテックトークで交流する会。開催案内・公開資料はconnpassをご覧ください。"
+      "summary": "開催案内・公開資料はconnpassをご覧ください。",
+      "status": "scheduled",
+      "registrationCount": 9,
+      "capacity": 10,
+      "attendanceCheckedAt": "2026-10-19T02:17:51.462Z",
+      "thumbnailKey": "events/5cfdceb47fc56123f1e26cdefb106adcf7cadafbee0ca37998ac96f1a40279a3.png"
+    },
+    {
+      "id": 386376,
+      "title": "Ibaraki.dev #17 もくもく会",
+      "number": "17",
+      "startsAt": "2026-04-04T04:00:00Z",
+      "endsAt": "2026-04-04T09:00:00Z",
+      "url": "https://mito-web-engineer.connpass.com/event/386376/",
+      "place": "茨城県水戸市泉町1丁目7番1号",
+      "address": "茨城県水戸市泉町1丁目7番1号",
+      "tags": [
+        "もくもく会"
+      ],
+      "summary": "開催案内・公開資料はconnpassをご覧ください。",
+      "status": "scheduled",
+      "registrationCount": 5,
+      "capacity": 8,
+      "attendanceCheckedAt": "2026-10-19T02:17:51.462Z",
+      "thumbnailKey": "events/5cfdceb47fc56123f1e26cdefb106adcf7cadafbee0ca37998ac96f1a40279a3.png"
+    },
+    {
+      "id": 385440,
+      "title": "Ibaraki.dev #EX もくもく会（ワグテイル閉館特別会）",
+      "number": "EX",
+      "startsAt": "2026-02-28T04:00:00Z",
+      "endsAt": "2026-02-28T09:00:00Z",
+      "url": "https://mito-web-engineer.connpass.com/event/385440/",
+      "place": "茨城県水戸市南町3-3-35",
+      "address": "茨城県水戸市南町3-3-35",
+      "tags": [
+        "もくもく会"
+      ],
+      "summary": "開催案内・公開資料はconnpassをご覧ください。",
+      "status": "scheduled",
+      "registrationCount": 4,
+      "capacity": 8,
+      "attendanceCheckedAt": "2026-10-19T02:17:51.462Z",
+      "thumbnailKey": "events/5cfdceb47fc56123f1e26cdefb106adcf7cadafbee0ca37998ac96f1a40279a3.png"
     },
     {
       "id": 382594,
       "title": "Ibaraki.dev #16 もくもく会",
       "number": "16",
-      "startsAt": "2026-02-15T13:00:00+09:00",
-      "endsAt": "2026-02-15T18:00:00+09:00",
+      "startsAt": "2026-02-15T04:00:00Z",
+      "endsAt": "2026-02-15T09:00:00Z",
       "url": "https://mito-web-engineer.connpass.com/event/382594/",
       "place": "コワーキングスペース水戸ワグテイル",
+      "address": "茨城県水戸市南町3-3-35",
       "tags": [
         "もくもく会",
         "LT・テックトーク"
       ],
-      "summary": "各自の開発や学習を進め、LTやテックトークで交流する会。開催案内・公開資料はconnpassをご覧ください。"
+      "summary": "開催案内・公開資料はconnpassをご覧ください。",
+      "status": "scheduled",
+      "registrationCount": 6,
+      "capacity": 8,
+      "attendanceCheckedAt": "2026-10-19T02:17:51.462Z",
+      "thumbnailKey": "events/5cfdceb47fc56123f1e26cdefb106adcf7cadafbee0ca37998ac96f1a40279a3.png"
     },
     {
       "id": 378991,
       "title": "Ibaraki.dev #15 もくもく会",
       "number": "15",
-      "startsAt": "2026-01-17T13:00:00+09:00",
-      "endsAt": "2026-01-17T18:00:00+09:00",
+      "startsAt": "2026-01-17T04:00:00Z",
+      "endsAt": "2026-01-17T09:00:00Z",
       "url": "https://mito-web-engineer.connpass.com/event/378991/",
       "place": "コワーキングスペース水戸ワグテイル",
+      "address": "茨城県水戸市南町3-3-35",
       "tags": [
         "もくもく会",
         "LT・テックトーク"
       ],
-      "summary": "各自の開発や学習を進め、LTやテックトークで交流する会。開催案内・公開資料はconnpassをご覧ください。"
+      "summary": "開催案内・公開資料はconnpassをご覧ください。",
+      "status": "scheduled",
+      "registrationCount": 4,
+      "capacity": 8,
+      "attendanceCheckedAt": "2026-10-19T02:17:51.462Z",
+      "thumbnailKey": "events/5cfdceb47fc56123f1e26cdefb106adcf7cadafbee0ca37998ac96f1a40279a3.png"
     },
     {
       "id": 375356,
       "title": "Ibaraki.dev #14 もくもく会",
       "number": "14",
-      "startsAt": "2025-11-29T13:00:00+09:00",
-      "endsAt": "2025-11-29T18:00:00+09:00",
+      "startsAt": "2025-11-29T04:00:00Z",
+      "endsAt": "2025-11-29T09:00:00Z",
       "url": "https://mito-web-engineer.connpass.com/event/375356/",
       "place": "コワーキングスペース水戸ワグテイル",
+      "address": "茨城県水戸市南町3-3-35",
       "tags": [
         "もくもく会",
         "LT・テックトーク"
       ],
-      "summary": "各自の開発や学習を進め、LTやテックトークで交流する会。開催案内・公開資料はconnpassをご覧ください。"
+      "summary": "開催案内・公開資料はconnpassをご覧ください。",
+      "status": "scheduled",
+      "registrationCount": 8,
+      "capacity": 8,
+      "attendanceCheckedAt": "2026-10-19T02:17:51.462Z",
+      "thumbnailKey": "events/5cfdceb47fc56123f1e26cdefb106adcf7cadafbee0ca37998ac96f1a40279a3.png"
+    },
+    {
+      "id": 368564,
+      "title": "Ibaraki.dev #13 もくもく会",
+      "number": "13",
+      "startsAt": "2025-10-18T04:00:00Z",
+      "endsAt": "2025-10-18T09:00:00Z",
+      "url": "https://mito-web-engineer.connpass.com/event/368564/",
+      "place": "茨城県水戸市南町3-3-35",
+      "address": "茨城県水戸市南町3-3-35",
+      "tags": [
+        "もくもく会"
+      ],
+      "summary": "開催案内・公開資料はconnpassをご覧ください。",
+      "status": "cancelled",
+      "registrationCount": 1,
+      "capacity": 8,
+      "attendanceCheckedAt": "2026-10-19T02:17:51.462Z",
+      "thumbnailKey": "events/5cfdceb47fc56123f1e26cdefb106adcf7cadafbee0ca37998ac96f1a40279a3.png"
+    },
+    {
+      "id": 358173,
+      "title": "Ibaraki.dev #12 もくもく会",
+      "number": "12",
+      "startsAt": "2025-09-06T04:00:00Z",
+      "endsAt": "2025-09-06T09:00:00Z",
+      "url": "https://mito-web-engineer.connpass.com/event/358173/",
+      "place": "茨城県水戸市南町3-3-35",
+      "address": "茨城県水戸市南町3-3-35",
+      "tags": [
+        "もくもく会"
+      ],
+      "summary": "開催案内・公開資料はconnpassをご覧ください。",
+      "status": "cancelled",
+      "registrationCount": 7,
+      "capacity": 8,
+      "attendanceCheckedAt": "2026-10-19T02:17:51.462Z",
+      "thumbnailKey": "events/5cfdceb47fc56123f1e26cdefb106adcf7cadafbee0ca37998ac96f1a40279a3.png"
     },
     {
       "id": 365485,
       "title": "Ibaraki.dev #12 もくもく会",
       "number": "12",
-      "startsAt": "2025-09-06T13:00:00+09:00",
-      "endsAt": "2025-09-06T18:00:00+09:00",
+      "startsAt": "2025-09-06T04:00:00Z",
+      "endsAt": "2025-09-06T09:00:00Z",
       "url": "https://mito-web-engineer.connpass.com/event/365485/",
       "place": "コワーキングスペース水戸ワグテイル",
+      "address": "茨城県水戸市南町3-3-35",
       "tags": [
         "もくもく会",
         "LT・テックトーク"
       ],
-      "summary": "各自の開発や学習を進め、LTやテックトークで交流する会。開催案内・公開資料はconnpassをご覧ください。"
+      "summary": "開催案内・公開資料はconnpassをご覧ください。",
+      "status": "scheduled",
+      "registrationCount": 7,
+      "capacity": 8,
+      "attendanceCheckedAt": "2026-10-19T02:17:51.462Z",
+      "thumbnailKey": "events/5cfdceb47fc56123f1e26cdefb106adcf7cadafbee0ca37998ac96f1a40279a3.png"
     },
     {
       "id": 352853,
       "title": "Ibaraki.dev #10 もくもく会",
       "number": "10",
-      "startsAt": "2025-05-24T13:00:00+09:00",
-      "endsAt": "2025-05-24T18:00:00+09:00",
+      "startsAt": "2025-05-24T04:00:00Z",
+      "endsAt": "2025-05-24T09:00:00Z",
       "url": "https://mito-web-engineer.connpass.com/event/352853/",
       "place": "コワーキングスペース水戸ワグテイル",
+      "address": "茨城県水戸市南町3-3-35",
       "tags": [
         "もくもく会",
         "LT・テックトーク"
       ],
-      "summary": "各自の開発や学習を進め、LTやテックトークで交流する会。開催案内・公開資料はconnpassをご覧ください。"
+      "summary": "開催案内・公開資料はconnpassをご覧ください。",
+      "status": "scheduled",
+      "registrationCount": 9,
+      "capacity": 10,
+      "attendanceCheckedAt": "2026-10-19T02:17:51.462Z",
+      "thumbnailKey": "events/5cfdceb47fc56123f1e26cdefb106adcf7cadafbee0ca37998ac96f1a40279a3.png"
+    },
+    {
+      "id": 347545,
+      "title": "Ibaraki.dev #9 もくもく会",
+      "number": "9",
+      "startsAt": "2025-03-29T04:00:00Z",
+      "endsAt": "2025-03-29T09:00:00Z",
+      "url": "https://mito-web-engineer.connpass.com/event/347545/",
+      "place": "茨城県水戸市南町3-3-35",
+      "address": "茨城県水戸市南町3-3-35",
+      "tags": [
+        "もくもく会"
+      ],
+      "summary": "開催案内・公開資料はconnpassをご覧ください。",
+      "status": "scheduled",
+      "registrationCount": 6,
+      "capacity": 8,
+      "attendanceCheckedAt": "2026-10-19T02:17:51.462Z",
+      "thumbnailKey": "events/5cfdceb47fc56123f1e26cdefb106adcf7cadafbee0ca37998ac96f1a40279a3.png"
+    },
+    {
+      "id": 342028,
+      "title": "Ibaraki.dev #8 もくもく会",
+      "number": "8",
+      "startsAt": "2025-02-01T04:00:00Z",
+      "endsAt": "2025-02-01T09:00:00Z",
+      "url": "https://mito-web-engineer.connpass.com/event/342028/",
+      "place": "茨城県水戸市南町3-3-35",
+      "address": "茨城県水戸市南町3-3-35",
+      "tags": [
+        "もくもく会"
+      ],
+      "summary": "開催案内・公開資料はconnpassをご覧ください。",
+      "status": "scheduled",
+      "registrationCount": 5,
+      "capacity": 8,
+      "attendanceCheckedAt": "2026-10-19T02:17:51.462Z",
+      "thumbnailKey": "events/5cfdceb47fc56123f1e26cdefb106adcf7cadafbee0ca37998ac96f1a40279a3.png"
+    },
+    {
+      "id": 336182,
+      "title": "Ibaraki.dev #7 もくもく会",
+      "number": "7",
+      "startsAt": "2024-11-30T04:00:00Z",
+      "endsAt": "2024-11-30T09:00:00Z",
+      "url": "https://mito-web-engineer.connpass.com/event/336182/",
+      "place": "茨城県水戸市南町3-3-35",
+      "address": "茨城県水戸市南町3-3-35",
+      "tags": [
+        "もくもく会"
+      ],
+      "summary": "開催案内・公開資料はconnpassをご覧ください。",
+      "status": "scheduled",
+      "registrationCount": 4,
+      "capacity": 8,
+      "attendanceCheckedAt": "2026-10-19T02:17:51.462Z",
+      "thumbnailKey": "events/5cfdceb47fc56123f1e26cdefb106adcf7cadafbee0ca37998ac96f1a40279a3.png"
+    },
+    {
+      "id": 332453,
+      "title": "Ibaraki.dev #6 もくもく会",
+      "number": "6",
+      "startsAt": "2024-10-26T04:00:00Z",
+      "endsAt": "2024-10-26T09:00:00Z",
+      "url": "https://mito-web-engineer.connpass.com/event/332453/",
+      "place": "茨城県水戸市南町3-3-35",
+      "address": "茨城県水戸市南町3-3-35",
+      "tags": [
+        "もくもく会"
+      ],
+      "summary": "開催案内・公開資料はconnpassをご覧ください。",
+      "status": "scheduled",
+      "registrationCount": 6,
+      "capacity": 8,
+      "attendanceCheckedAt": "2026-10-19T02:17:51.462Z",
+      "thumbnailKey": "events/5cfdceb47fc56123f1e26cdefb106adcf7cadafbee0ca37998ac96f1a40279a3.png"
+    },
+    {
+      "id": 328933,
+      "title": "Ibaraki.dev #5 もくもく会",
+      "number": "5",
+      "startsAt": "2024-09-07T04:00:00Z",
+      "endsAt": "2024-09-07T09:00:00Z",
+      "url": "https://mito-web-engineer.connpass.com/event/328933/",
+      "place": "茨城県水戸市南町3-3-35",
+      "address": "茨城県水戸市南町3-3-35",
+      "tags": [
+        "もくもく会"
+      ],
+      "summary": "開催案内・公開資料はconnpassをご覧ください。",
+      "status": "scheduled",
+      "registrationCount": 7,
+      "capacity": 10,
+      "attendanceCheckedAt": "2026-10-19T02:17:51.462Z",
+      "thumbnailKey": "events/5cfdceb47fc56123f1e26cdefb106adcf7cadafbee0ca37998ac96f1a40279a3.png"
+    },
+    {
+      "id": 323225,
+      "title": "Ibaraki.dev #5 もくもく会",
+      "number": "5",
+      "startsAt": "2024-07-27T04:00:00Z",
+      "endsAt": "2024-07-27T09:00:00Z",
+      "url": "https://mito-web-engineer.connpass.com/event/323225/",
+      "place": "茨城県水戸市南町3-3-35",
+      "address": "茨城県水戸市南町3-3-35",
+      "tags": [
+        "もくもく会"
+      ],
+      "summary": "開催案内・公開資料はconnpassをご覧ください。",
+      "status": "cancelled",
+      "registrationCount": 3,
+      "capacity": 8,
+      "attendanceCheckedAt": "2026-10-19T02:17:51.462Z",
+      "thumbnailKey": "events/5cfdceb47fc56123f1e26cdefb106adcf7cadafbee0ca37998ac96f1a40279a3.png"
+    },
+    {
+      "id": 321283,
+      "title": "Ibaraki.dev #4 もくもく会",
+      "number": "4",
+      "startsAt": "2024-06-22T04:00:00Z",
+      "endsAt": "2024-06-22T09:00:00Z",
+      "url": "https://mito-web-engineer.connpass.com/event/321283/",
+      "place": "茨城県水戸市南町3-3-35",
+      "address": "茨城県水戸市南町3-3-35",
+      "tags": [
+        "もくもく会"
+      ],
+      "summary": "開催案内・公開資料はconnpassをご覧ください。",
+      "status": "scheduled",
+      "registrationCount": 8,
+      "capacity": 8,
+      "attendanceCheckedAt": "2026-10-19T02:17:51.462Z",
+      "thumbnailKey": "events/5cfdceb47fc56123f1e26cdefb106adcf7cadafbee0ca37998ac96f1a40279a3.png"
+    },
+    {
+      "id": 318155,
+      "title": "Ibaraki.dev #3 もくもく会",
+      "number": "3",
+      "startsAt": "2024-05-25T04:00:00Z",
+      "endsAt": "2024-05-25T09:00:00Z",
+      "url": "https://mito-web-engineer.connpass.com/event/318155/",
+      "place": "茨城県水戸市南町3-3-35",
+      "address": "茨城県水戸市南町3-3-35",
+      "tags": [
+        "もくもく会"
+      ],
+      "summary": "開催案内・公開資料はconnpassをご覧ください。",
+      "status": "scheduled",
+      "registrationCount": 7,
+      "capacity": 8,
+      "attendanceCheckedAt": "2026-10-19T02:17:51.462Z",
+      "thumbnailKey": "events/5cfdceb47fc56123f1e26cdefb106adcf7cadafbee0ca37998ac96f1a40279a3.png"
+    },
+    {
+      "id": 314957,
+      "title": "Ibaraki.dev #2 もくもく会",
+      "number": "2",
+      "startsAt": "2024-04-20T04:00:00Z",
+      "endsAt": "2024-04-20T09:00:00Z",
+      "url": "https://mito-web-engineer.connpass.com/event/314957/",
+      "place": "茨城県水戸市南町3-3-35",
+      "address": "茨城県水戸市南町3-3-35",
+      "tags": [
+        "もくもく会"
+      ],
+      "summary": "開催案内・公開資料はconnpassをご覧ください。",
+      "status": "scheduled",
+      "registrationCount": 4,
+      "capacity": 8,
+      "attendanceCheckedAt": "2026-10-19T02:17:51.462Z",
+      "thumbnailKey": "events/5cfdceb47fc56123f1e26cdefb106adcf7cadafbee0ca37998ac96f1a40279a3.png"
+    },
+    {
+      "id": 312223,
+      "title": "Ibaraki.dev #1 もくもく会",
+      "number": "1",
+      "startsAt": "2024-03-30T04:00:00Z",
+      "endsAt": "2024-03-30T09:00:00Z",
+      "url": "https://mito-web-engineer.connpass.com/event/312223/",
+      "place": "茨城県水戸市南町3-3-35",
+      "address": "茨城県水戸市南町3-3-35",
+      "tags": [
+        "もくもく会"
+      ],
+      "summary": "開催案内・公開資料はconnpassをご覧ください。",
+      "status": "scheduled",
+      "registrationCount": 6,
+      "capacity": 8,
+      "attendanceCheckedAt": "2026-10-19T02:17:51.462Z",
+      "thumbnailKey": "events/5cfdceb47fc56123f1e26cdefb106adcf7cadafbee0ca37998ac96f1a40279a3.png"
+    },
+    {
+      "id": 309457,
+      "title": "Mito.dev #49 もくもく会",
+      "number": "49",
+      "startsAt": "2024-02-24T04:00:00Z",
+      "endsAt": "2024-02-24T09:00:00Z",
+      "url": "https://mito-web-engineer.connpass.com/event/309457/",
+      "place": "茨城県水戸市南町3-3-35",
+      "address": "茨城県水戸市南町3-3-35",
+      "tags": [
+        "もくもく会"
+      ],
+      "summary": "開催案内・公開資料はconnpassをご覧ください。",
+      "status": "scheduled",
+      "registrationCount": 7,
+      "capacity": 8,
+      "attendanceCheckedAt": "2026-10-19T02:17:51.462Z",
+      "thumbnailKey": "events/701f422b72d91a01dade32543dfc974ae3feea3f1e900c11c33596a0525d9623.png"
+    },
+    {
+      "id": 305795,
+      "title": "Mito.dev #48 もくもく会",
+      "number": "48",
+      "startsAt": "2024-01-27T04:00:00Z",
+      "endsAt": "2024-01-27T09:00:00Z",
+      "url": "https://mito-web-engineer.connpass.com/event/305795/",
+      "place": "茨城県水戸市南町3-3-35",
+      "address": "茨城県水戸市南町3-3-35",
+      "tags": [
+        "もくもく会"
+      ],
+      "summary": "開催案内・公開資料はconnpassをご覧ください。",
+      "status": "scheduled",
+      "registrationCount": 5,
+      "capacity": 8,
+      "attendanceCheckedAt": "2026-10-19T02:17:51.462Z",
+      "thumbnailKey": "events/701f422b72d91a01dade32543dfc974ae3feea3f1e900c11c33596a0525d9623.png"
+    },
+    {
+      "id": 300635,
+      "title": "Mito.dev #47 もくもく会",
+      "number": "47",
+      "startsAt": "2023-11-25T04:00:00Z",
+      "endsAt": "2023-11-25T09:00:00Z",
+      "url": "https://mito-web-engineer.connpass.com/event/300635/",
+      "place": "茨城県水戸市南町3-3-35",
+      "address": "茨城県水戸市南町3-3-35",
+      "tags": [
+        "もくもく会"
+      ],
+      "summary": "開催案内・公開資料はconnpassをご覧ください。",
+      "status": "scheduled",
+      "registrationCount": 5,
+      "capacity": 8,
+      "attendanceCheckedAt": "2026-10-19T02:17:51.462Z",
+      "thumbnailKey": "events/701f422b72d91a01dade32543dfc974ae3feea3f1e900c11c33596a0525d9623.png"
+    },
+    {
+      "id": 297944,
+      "title": "Mito.dev #46 もくもく会",
+      "number": "46",
+      "startsAt": "2023-10-21T04:00:00Z",
+      "endsAt": "2023-10-21T09:00:00Z",
+      "url": "https://mito-web-engineer.connpass.com/event/297944/",
+      "place": "茨城県水戸市南町3-3-35",
+      "address": "茨城県水戸市南町3-3-35",
+      "tags": [
+        "もくもく会"
+      ],
+      "summary": "開催案内・公開資料はconnpassをご覧ください。",
+      "status": "scheduled",
+      "registrationCount": 5,
+      "capacity": 8,
+      "attendanceCheckedAt": "2026-10-19T02:17:51.462Z",
+      "thumbnailKey": "events/701f422b72d91a01dade32543dfc974ae3feea3f1e900c11c33596a0525d9623.png"
+    },
+    {
+      "id": 294043,
+      "title": "Mito.dev #45 もくもく会",
+      "number": "45",
+      "startsAt": "2023-09-24T04:00:00Z",
+      "endsAt": "2023-09-24T09:00:00Z",
+      "url": "https://mito-web-engineer.connpass.com/event/294043/",
+      "place": "茨城県水戸市南町3-3-35",
+      "address": "茨城県水戸市南町3-3-35",
+      "tags": [
+        "もくもく会"
+      ],
+      "summary": "開催案内・公開資料はconnpassをご覧ください。",
+      "status": "scheduled",
+      "registrationCount": 3,
+      "capacity": 8,
+      "attendanceCheckedAt": "2026-10-19T02:17:51.462Z",
+      "thumbnailKey": "events/701f422b72d91a01dade32543dfc974ae3feea3f1e900c11c33596a0525d9623.png"
+    },
+    {
+      "id": 292014,
+      "title": "Mito.dev #44 もくもく会",
+      "number": "44",
+      "startsAt": "2023-08-19T04:00:00Z",
+      "endsAt": "2023-08-19T09:00:00Z",
+      "url": "https://mito-web-engineer.connpass.com/event/292014/",
+      "place": "茨城県水戸市南町3-3-35",
+      "address": "茨城県水戸市南町3-3-35",
+      "tags": [
+        "もくもく会"
+      ],
+      "summary": "開催案内・公開資料はconnpassをご覧ください。",
+      "status": "scheduled",
+      "registrationCount": 4,
+      "capacity": 8,
+      "attendanceCheckedAt": "2026-10-19T02:17:51.462Z",
+      "thumbnailKey": "events/701f422b72d91a01dade32543dfc974ae3feea3f1e900c11c33596a0525d9623.png"
+    },
+    {
+      "id": 288845,
+      "title": "Mito.dev #43 もくもく会",
+      "number": "43",
+      "startsAt": "2023-07-29T04:00:00Z",
+      "endsAt": "2023-07-29T09:00:00Z",
+      "url": "https://mito-web-engineer.connpass.com/event/288845/",
+      "place": "茨城県水戸市南町3-3-35",
+      "address": "茨城県水戸市南町3-3-35",
+      "tags": [
+        "もくもく会"
+      ],
+      "summary": "開催案内・公開資料はconnpassをご覧ください。",
+      "status": "cancelled",
+      "registrationCount": 3,
+      "capacity": 8,
+      "attendanceCheckedAt": "2026-10-19T02:17:51.462Z",
+      "thumbnailKey": "events/701f422b72d91a01dade32543dfc974ae3feea3f1e900c11c33596a0525d9623.png"
+    },
+    {
+      "id": 285444,
+      "title": "Mito.dev #42 もくもく会",
+      "number": "42",
+      "startsAt": "2023-06-18T04:00:00Z",
+      "endsAt": "2023-06-18T09:00:00Z",
+      "url": "https://mito-web-engineer.connpass.com/event/285444/",
+      "place": "茨城県水戸市南町3-3-35",
+      "address": "茨城県水戸市南町3-3-35",
+      "tags": [
+        "もくもく会"
+      ],
+      "summary": "開催案内・公開資料はconnpassをご覧ください。",
+      "status": "scheduled",
+      "registrationCount": 3,
+      "capacity": 8,
+      "attendanceCheckedAt": "2026-10-19T02:17:51.462Z",
+      "thumbnailKey": "events/701f422b72d91a01dade32543dfc974ae3feea3f1e900c11c33596a0525d9623.png"
+    },
+    {
+      "id": 281985,
+      "title": "Mito.dev #41 もくもく会",
+      "number": "41",
+      "startsAt": "2023-05-20T04:00:00Z",
+      "endsAt": "2023-05-20T09:00:00Z",
+      "url": "https://mito-web-engineer.connpass.com/event/281985/",
+      "place": "茨城県水戸市南町3-3-35",
+      "address": "茨城県水戸市南町3-3-35",
+      "tags": [
+        "もくもく会"
+      ],
+      "summary": "開催案内・公開資料はconnpassをご覧ください。",
+      "status": "scheduled",
+      "registrationCount": 4,
+      "capacity": 8,
+      "attendanceCheckedAt": "2026-10-19T02:17:51.462Z",
+      "thumbnailKey": "events/701f422b72d91a01dade32543dfc974ae3feea3f1e900c11c33596a0525d9623.png"
+    },
+    {
+      "id": 280425,
+      "title": "Mito.dev #40 もくもく会",
+      "number": "40",
+      "startsAt": "2023-04-22T04:00:00Z",
+      "endsAt": "2023-04-22T09:00:00Z",
+      "url": "https://mito-web-engineer.connpass.com/event/280425/",
+      "place": "茨城県水戸市南町3-3-35",
+      "address": "茨城県水戸市南町3-3-35",
+      "tags": [
+        "もくもく会"
+      ],
+      "summary": "開催案内・公開資料はconnpassをご覧ください。",
+      "status": "scheduled",
+      "registrationCount": 6,
+      "capacity": 8,
+      "attendanceCheckedAt": "2026-10-19T02:17:51.462Z",
+      "thumbnailKey": "events/701f422b72d91a01dade32543dfc974ae3feea3f1e900c11c33596a0525d9623.png"
+    },
+    {
+      "id": 273999,
+      "title": "Mito.dev #40 もくもく会",
+      "number": "40",
+      "startsAt": "2023-02-25T04:00:00Z",
+      "endsAt": "2023-02-25T09:00:00Z",
+      "url": "https://mito-web-engineer.connpass.com/event/273999/",
+      "place": "茨城県水戸市南町3-3-35",
+      "address": "茨城県水戸市南町3-3-35",
+      "tags": [
+        "もくもく会"
+      ],
+      "summary": "開催案内・公開資料はconnpassをご覧ください。",
+      "status": "cancelled",
+      "registrationCount": 2,
+      "capacity": 8,
+      "attendanceCheckedAt": "2026-10-19T02:17:51.462Z",
+      "thumbnailKey": "events/701f422b72d91a01dade32543dfc974ae3feea3f1e900c11c33596a0525d9623.png"
+    },
+    {
+      "id": 270384,
+      "title": "Mito.dev #39 もくもく会",
+      "number": "39",
+      "startsAt": "2023-01-28T04:00:00Z",
+      "endsAt": "2023-01-28T09:00:00Z",
+      "url": "https://mito-web-engineer.connpass.com/event/270384/",
+      "place": "茨城県水戸市南町3-3-35",
+      "address": "茨城県水戸市南町3-3-35",
+      "tags": [
+        "もくもく会"
+      ],
+      "summary": "開催案内・公開資料はconnpassをご覧ください。",
+      "status": "scheduled",
+      "registrationCount": 6,
+      "capacity": 8,
+      "attendanceCheckedAt": "2026-10-19T02:17:51.462Z",
+      "thumbnailKey": "events/701f422b72d91a01dade32543dfc974ae3feea3f1e900c11c33596a0525d9623.png"
+    },
+    {
+      "id": 264241,
+      "title": "Mito.dev #38 もくもく会",
+      "number": "38",
+      "startsAt": "2022-11-26T04:00:00Z",
+      "endsAt": "2022-11-26T09:00:00Z",
+      "url": "https://mito-web-engineer.connpass.com/event/264241/",
+      "place": "茨城県水戸市南町3-3-35",
+      "address": "茨城県水戸市南町3-3-35",
+      "tags": [
+        "もくもく会"
+      ],
+      "summary": "開催案内・公開資料はconnpassをご覧ください。",
+      "status": "scheduled",
+      "registrationCount": 5,
+      "capacity": 8,
+      "attendanceCheckedAt": "2026-10-19T02:17:51.462Z",
+      "thumbnailKey": "events/701f422b72d91a01dade32543dfc974ae3feea3f1e900c11c33596a0525d9623.png"
+    },
+    {
+      "id": 262468,
+      "title": "Mito.dev #37 もくもく会",
+      "number": "37",
+      "startsAt": "2022-10-23T04:00:00Z",
+      "endsAt": "2022-10-23T09:00:00Z",
+      "url": "https://mito-web-engineer.connpass.com/event/262468/",
+      "place": "茨城県水戸市南町3-3-35",
+      "address": "茨城県水戸市南町3-3-35",
+      "tags": [
+        "もくもく会"
+      ],
+      "summary": "開催案内・公開資料はconnpassをご覧ください。",
+      "status": "scheduled",
+      "registrationCount": 5,
+      "capacity": 8,
+      "attendanceCheckedAt": "2026-10-19T02:17:51.462Z",
+      "thumbnailKey": "events/701f422b72d91a01dade32543dfc974ae3feea3f1e900c11c33596a0525d9623.png"
+    },
+    {
+      "id": 259835,
+      "title": "Mito.dev #36 もくもく会",
+      "number": "36",
+      "startsAt": "2022-09-25T04:00:00Z",
+      "endsAt": "2022-09-25T09:00:00Z",
+      "url": "https://mito-web-engineer.connpass.com/event/259835/",
+      "place": "茨城県水戸市南町3-3-35",
+      "address": "茨城県水戸市南町3-3-35",
+      "tags": [
+        "もくもく会"
+      ],
+      "summary": "開催案内・公開資料はconnpassをご覧ください。",
+      "status": "cancelled",
+      "registrationCount": 2,
+      "capacity": 2,
+      "attendanceCheckedAt": "2026-10-19T02:17:51.462Z",
+      "thumbnailKey": "events/701f422b72d91a01dade32543dfc974ae3feea3f1e900c11c33596a0525d9623.png"
+    },
+    {
+      "id": 256924,
+      "title": "Mito.dev #35 もくもく会",
+      "number": "35",
+      "startsAt": "2022-08-27T04:00:00Z",
+      "endsAt": "2022-08-27T09:00:00Z",
+      "url": "https://mito-web-engineer.connpass.com/event/256924/",
+      "place": "茨城県水戸市南町3-3-35",
+      "address": "茨城県水戸市南町3-3-35",
+      "tags": [
+        "もくもく会"
+      ],
+      "summary": "開催案内・公開資料はconnpassをご覧ください。",
+      "status": "scheduled",
+      "registrationCount": 4,
+      "capacity": 8,
+      "attendanceCheckedAt": "2026-10-19T02:17:51.462Z",
+      "thumbnailKey": "events/701f422b72d91a01dade32543dfc974ae3feea3f1e900c11c33596a0525d9623.png"
+    },
+    {
+      "id": 253802,
+      "title": "Mito.dev #34 もくもく会",
+      "number": "34",
+      "startsAt": "2022-07-30T04:00:00Z",
+      "endsAt": "2022-07-30T09:00:00Z",
+      "url": "https://mito-web-engineer.connpass.com/event/253802/",
+      "place": "茨城県水戸市南町3-3-35",
+      "address": "茨城県水戸市南町3-3-35",
+      "tags": [
+        "もくもく会"
+      ],
+      "summary": "開催案内・公開資料はconnpassをご覧ください。",
+      "status": "scheduled",
+      "registrationCount": 5,
+      "capacity": 8,
+      "attendanceCheckedAt": "2026-10-19T02:17:51.462Z",
+      "thumbnailKey": "events/701f422b72d91a01dade32543dfc974ae3feea3f1e900c11c33596a0525d9623.png"
+    },
+    {
+      "id": 249819,
+      "title": "Mito.dev #33 もくもく会",
+      "number": "33",
+      "startsAt": "2022-06-25T04:00:00Z",
+      "endsAt": "2022-06-25T09:00:00Z",
+      "url": "https://mito-web-engineer.connpass.com/event/249819/",
+      "place": "茨城県水戸市南町3-3-35",
+      "address": "茨城県水戸市南町3-3-35",
+      "tags": [
+        "もくもく会"
+      ],
+      "summary": "開催案内・公開資料はconnpassをご覧ください。",
+      "status": "scheduled",
+      "registrationCount": 8,
+      "capacity": 8,
+      "attendanceCheckedAt": "2026-10-19T02:17:51.462Z",
+      "thumbnailKey": "events/701f422b72d91a01dade32543dfc974ae3feea3f1e900c11c33596a0525d9623.png"
+    },
+    {
+      "id": 247071,
+      "title": "Mito.dev #32 もくもく会",
+      "number": "32",
+      "startsAt": "2022-05-28T04:00:00Z",
+      "endsAt": "2022-05-28T09:00:00Z",
+      "url": "https://mito-web-engineer.connpass.com/event/247071/",
+      "place": "茨城県水戸市南町3-3-35",
+      "address": "茨城県水戸市南町3-3-35",
+      "tags": [
+        "もくもく会"
+      ],
+      "summary": "開催案内・公開資料はconnpassをご覧ください。",
+      "status": "scheduled",
+      "registrationCount": 3,
+      "capacity": 8,
+      "attendanceCheckedAt": "2026-10-19T02:17:51.462Z",
+      "thumbnailKey": "events/701f422b72d91a01dade32543dfc974ae3feea3f1e900c11c33596a0525d9623.png"
+    },
+    {
+      "id": 243784,
+      "title": "Mito.dev #31 もくもく会",
+      "number": "31",
+      "startsAt": "2022-04-23T04:00:00Z",
+      "endsAt": "2022-04-23T09:00:00Z",
+      "url": "https://mito-web-engineer.connpass.com/event/243784/",
+      "place": "茨城県水戸市南町3-3-35",
+      "address": "茨城県水戸市南町3-3-35",
+      "tags": [
+        "もくもく会"
+      ],
+      "summary": "開催案内・公開資料はconnpassをご覧ください。",
+      "status": "scheduled",
+      "registrationCount": 8,
+      "capacity": 8,
+      "attendanceCheckedAt": "2026-10-19T02:17:51.462Z",
+      "thumbnailKey": "events/701f422b72d91a01dade32543dfc974ae3feea3f1e900c11c33596a0525d9623.png"
+    },
+    {
+      "id": 240997,
+      "title": "Mito.dev #30 もくもく会",
+      "number": "30",
+      "startsAt": "2022-03-27T04:00:00Z",
+      "endsAt": "2022-03-27T09:00:00Z",
+      "url": "https://mito-web-engineer.connpass.com/event/240997/",
+      "place": "茨城県水戸市南町3-3-35",
+      "address": "茨城県水戸市南町3-3-35",
+      "tags": [
+        "もくもく会"
+      ],
+      "summary": "開催案内・公開資料はconnpassをご覧ください。",
+      "status": "scheduled",
+      "registrationCount": 7,
+      "capacity": 8,
+      "attendanceCheckedAt": "2026-10-19T02:17:51.462Z",
+      "thumbnailKey": "events/701f422b72d91a01dade32543dfc974ae3feea3f1e900c11c33596a0525d9623.png"
+    },
+    {
+      "id": 237818,
+      "title": "Mito.dev #29 もくもく会",
+      "number": "29",
+      "startsAt": "2022-02-26T04:00:00Z",
+      "endsAt": "2022-02-26T09:00:00Z",
+      "url": "https://mito-web-engineer.connpass.com/event/237818/",
+      "place": "茨城県水戸市南町3-3-35",
+      "address": "茨城県水戸市南町3-3-35",
+      "tags": [
+        "もくもく会"
+      ],
+      "summary": "開催案内・公開資料はconnpassをご覧ください。",
+      "status": "cancelled",
+      "registrationCount": 3,
+      "capacity": 8,
+      "attendanceCheckedAt": "2026-10-19T02:17:51.462Z",
+      "thumbnailKey": "events/701f422b72d91a01dade32543dfc974ae3feea3f1e900c11c33596a0525d9623.png"
+    },
+    {
+      "id": 238542,
+      "title": "Mito.dev #29 もくもく会",
+      "number": "29",
+      "startsAt": "2022-02-20T04:00:00Z",
+      "endsAt": "2022-02-20T09:00:00Z",
+      "url": "https://mito-web-engineer.connpass.com/event/238542/",
+      "place": "茨城県水戸市南町3-3-35",
+      "address": "茨城県水戸市南町3-3-35",
+      "tags": [
+        "もくもく会"
+      ],
+      "summary": "開催案内・公開資料はconnpassをご覧ください。",
+      "status": "scheduled",
+      "registrationCount": 3,
+      "capacity": 8,
+      "attendanceCheckedAt": "2026-10-19T02:17:51.462Z",
+      "thumbnailKey": "events/701f422b72d91a01dade32543dfc974ae3feea3f1e900c11c33596a0525d9623.png"
+    },
+    {
+      "id": 235209,
+      "title": "Mito.dev #28 もくもく会",
+      "number": "28",
+      "startsAt": "2022-01-23T04:00:00Z",
+      "endsAt": "2022-01-23T09:00:00Z",
+      "url": "https://mito-web-engineer.connpass.com/event/235209/",
+      "place": "茨城県水戸市南町3-3-35",
+      "address": "茨城県水戸市南町3-3-35",
+      "tags": [
+        "もくもく会"
+      ],
+      "summary": "開催案内・公開資料はconnpassをご覧ください。",
+      "status": "scheduled",
+      "registrationCount": 5,
+      "capacity": 8,
+      "attendanceCheckedAt": "2026-10-19T02:17:51.462Z",
+      "thumbnailKey": "events/701f422b72d91a01dade32543dfc974ae3feea3f1e900c11c33596a0525d9623.png"
+    },
+    {
+      "id": 232944,
+      "title": "Mito.dev #27 もくもく会",
+      "number": "27",
+      "startsAt": "2021-12-12T04:00:00Z",
+      "endsAt": "2021-12-12T09:00:00Z",
+      "url": "https://mito-web-engineer.connpass.com/event/232944/",
+      "place": "茨城県水戸市南町3-3-35",
+      "address": "茨城県水戸市南町3-3-35",
+      "tags": [
+        "もくもく会"
+      ],
+      "summary": "開催案内・公開資料はconnpassをご覧ください。",
+      "status": "scheduled",
+      "registrationCount": 5,
+      "capacity": 8,
+      "attendanceCheckedAt": "2026-10-19T02:17:51.462Z",
+      "thumbnailKey": "events/701f422b72d91a01dade32543dfc974ae3feea3f1e900c11c33596a0525d9623.png"
+    },
+    {
+      "id": 230538,
+      "title": "Mito.dev #26 もくもく会",
+      "number": "26",
+      "startsAt": "2021-11-27T04:00:00Z",
+      "endsAt": "2021-11-27T09:00:00Z",
+      "url": "https://mito-web-engineer.connpass.com/event/230538/",
+      "place": "茨城県水戸市南町3-3-35",
+      "address": "茨城県水戸市南町3-3-35",
+      "tags": [
+        "もくもく会"
+      ],
+      "summary": "開催案内・公開資料はconnpassをご覧ください。",
+      "status": "scheduled",
+      "registrationCount": 7,
+      "capacity": 8,
+      "attendanceCheckedAt": "2026-10-19T02:17:51.462Z",
+      "thumbnailKey": "events/701f422b72d91a01dade32543dfc974ae3feea3f1e900c11c33596a0525d9623.png"
+    },
+    {
+      "id": 226922,
+      "title": "Mito.dev #25 もくもく会",
+      "number": "25",
+      "startsAt": "2021-10-23T04:00:00Z",
+      "endsAt": "2021-10-23T09:00:00Z",
+      "url": "https://mito-web-engineer.connpass.com/event/226922/",
+      "place": "茨城県水戸市南町3-3-35",
+      "address": "茨城県水戸市南町3-3-35",
+      "tags": [
+        "もくもく会"
+      ],
+      "summary": "開催案内・公開資料はconnpassをご覧ください。",
+      "status": "scheduled",
+      "registrationCount": 5,
+      "capacity": 8,
+      "attendanceCheckedAt": "2026-10-19T02:17:51.462Z",
+      "thumbnailKey": "events/701f422b72d91a01dade32543dfc974ae3feea3f1e900c11c33596a0525d9623.png"
+    },
+    {
+      "id": 221349,
+      "title": "[オンライン] 水戸エンジニア勉強会 #23 もくもく & LT会",
+      "number": "23",
+      "startsAt": "2021-08-14T04:00:00Z",
+      "endsAt": "2021-08-14T08:00:00Z",
+      "url": "https://mito-web-engineer.connpass.com/event/221349/",
+      "place": "オンライン",
+      "address": "オンライン",
+      "tags": [
+        "もくもく会"
+      ],
+      "summary": "開催案内・公開資料はconnpassをご覧ください。",
+      "status": "scheduled",
+      "registrationCount": 1,
+      "capacity": 10,
+      "attendanceCheckedAt": "2026-10-19T02:17:51.462Z",
+      "thumbnailKey": "events/1e4a9c3ac0d26a45cebdd8d7fb989d4538ca6953a492a70bed6e6b6889e6ca21.png"
+    },
+    {
+      "id": 220060,
+      "title": "水戸エンジニア勉強会 #24 もくもく & LT会",
+      "number": "24",
+      "startsAt": "2021-08-14T04:00:00Z",
+      "endsAt": "2021-08-14T09:00:00Z",
+      "url": "https://mito-web-engineer.connpass.com/event/220060/",
+      "place": "茨城県水戸市南町3-3-35",
+      "address": "茨城県水戸市南町3-3-35",
+      "tags": [
+        "もくもく会"
+      ],
+      "summary": "開催案内・公開資料はconnpassをご覧ください。",
+      "status": "cancelled",
+      "registrationCount": 3,
+      "capacity": 6,
+      "attendanceCheckedAt": "2026-10-19T02:17:51.462Z",
+      "thumbnailKey": "events/1e4a9c3ac0d26a45cebdd8d7fb989d4538ca6953a492a70bed6e6b6889e6ca21.png"
+    },
+    {
+      "id": 217741,
+      "title": "水戸エンジニア勉強会 #23 もくもく & LT会",
+      "number": "23",
+      "startsAt": "2021-07-10T04:00:00Z",
+      "endsAt": "2021-07-10T09:00:00Z",
+      "url": "https://mito-web-engineer.connpass.com/event/217741/",
+      "place": "茨城県水戸市南町3-3-35",
+      "address": "茨城県水戸市南町3-3-35",
+      "tags": [
+        "もくもく会"
+      ],
+      "summary": "開催案内・公開資料はconnpassをご覧ください。",
+      "status": "scheduled",
+      "registrationCount": 3,
+      "capacity": 6,
+      "attendanceCheckedAt": "2026-10-19T02:17:51.462Z",
+      "thumbnailKey": "events/1e4a9c3ac0d26a45cebdd8d7fb989d4538ca6953a492a70bed6e6b6889e6ca21.png"
+    },
+    {
+      "id": 215775,
+      "title": "水戸エンジニア勉強会 #22 もくもく & LT会",
+      "number": "22",
+      "startsAt": "2021-06-26T04:00:00Z",
+      "endsAt": "2021-06-26T09:00:00Z",
+      "url": "https://mito-web-engineer.connpass.com/event/215775/",
+      "place": "茨城県水戸市南町3-3-35",
+      "address": "茨城県水戸市南町3-3-35",
+      "tags": [
+        "もくもく会"
+      ],
+      "summary": "開催案内・公開資料はconnpassをご覧ください。",
+      "status": "scheduled",
+      "registrationCount": 3,
+      "capacity": 6,
+      "attendanceCheckedAt": "2026-10-19T02:17:51.462Z",
+      "thumbnailKey": "events/1e4a9c3ac0d26a45cebdd8d7fb989d4538ca6953a492a70bed6e6b6889e6ca21.png"
+    },
+    {
+      "id": 213804,
+      "title": "[オンライン] 水戸エンジニア勉強会 #21 もくもく & LT会",
+      "number": "21",
+      "startsAt": "2021-05-23T04:00:00Z",
+      "endsAt": "2021-05-23T09:00:00Z",
+      "url": "https://mito-web-engineer.connpass.com/event/213804/",
+      "place": "オンライン",
+      "address": "オンライン",
+      "tags": [
+        "もくもく会"
+      ],
+      "summary": "開催案内・公開資料はconnpassをご覧ください。",
+      "status": "scheduled",
+      "registrationCount": 3,
+      "capacity": 10,
+      "attendanceCheckedAt": "2026-10-19T02:17:51.462Z",
+      "thumbnailKey": "events/1e4a9c3ac0d26a45cebdd8d7fb989d4538ca6953a492a70bed6e6b6889e6ca21.png"
+    },
+    {
+      "id": 212372,
+      "title": "水戸エンジニア勉強会 #21 もくもく & LT会",
+      "number": "21",
+      "startsAt": "2021-05-23T04:00:00Z",
+      "endsAt": "2021-05-23T09:00:00Z",
+      "url": "https://mito-web-engineer.connpass.com/event/212372/",
+      "place": "茨城県水戸市南町3-3-35",
+      "address": "茨城県水戸市南町3-3-35",
+      "tags": [
+        "もくもく会"
+      ],
+      "summary": "開催案内・公開資料はconnpassをご覧ください。",
+      "status": "cancelled",
+      "registrationCount": 7,
+      "capacity": 6,
+      "attendanceCheckedAt": "2026-10-19T02:17:51.462Z",
+      "thumbnailKey": "events/1e4a9c3ac0d26a45cebdd8d7fb989d4538ca6953a492a70bed6e6b6889e6ca21.png"
+    },
+    {
+      "id": 209425,
+      "title": "水戸エンジニア勉強会 #20 もくもく & LT会",
+      "number": "20",
+      "startsAt": "2021-04-25T04:00:00Z",
+      "endsAt": "2021-04-25T09:00:00Z",
+      "url": "https://mito-web-engineer.connpass.com/event/209425/",
+      "place": "茨城県水戸市南町3-3-35",
+      "address": "茨城県水戸市南町3-3-35",
+      "tags": [
+        "もくもく会"
+      ],
+      "summary": "開催案内・公開資料はconnpassをご覧ください。",
+      "status": "scheduled",
+      "registrationCount": 4,
+      "capacity": 6,
+      "attendanceCheckedAt": "2026-10-19T02:17:51.462Z",
+      "thumbnailKey": "events/1e4a9c3ac0d26a45cebdd8d7fb989d4538ca6953a492a70bed6e6b6889e6ca21.png"
+    },
+    {
+      "id": 207095,
+      "title": "水戸エンジニア勉強会 #19 もくもく & LT会",
+      "number": "19",
+      "startsAt": "2021-03-27T04:00:00Z",
+      "endsAt": "2021-03-27T09:00:00Z",
+      "url": "https://mito-web-engineer.connpass.com/event/207095/",
+      "place": "茨城県水戸市南町3-3-35",
+      "address": "茨城県水戸市南町3-3-35",
+      "tags": [
+        "もくもく会"
+      ],
+      "summary": "開催案内・公開資料はconnpassをご覧ください。",
+      "status": "scheduled",
+      "registrationCount": 4,
+      "capacity": 6,
+      "attendanceCheckedAt": "2026-10-19T02:17:51.462Z",
+      "thumbnailKey": "events/1e4a9c3ac0d26a45cebdd8d7fb989d4538ca6953a492a70bed6e6b6889e6ca21.png"
+    },
+    {
+      "id": 202449,
+      "title": "[オンライン] 水戸エンジニア勉強会 #18 もくもく & LT会",
+      "number": "18",
+      "startsAt": "2021-02-27T04:00:00Z",
+      "endsAt": "2021-02-27T09:00:00Z",
+      "url": "https://mito-web-engineer.connpass.com/event/202449/",
+      "place": "オンライン",
+      "address": "オンライン",
+      "tags": [
+        "もくもく会"
+      ],
+      "summary": "開催案内・公開資料はconnpassをご覧ください。",
+      "status": "scheduled",
+      "registrationCount": 4,
+      "capacity": 10,
+      "attendanceCheckedAt": "2026-10-19T02:17:51.462Z",
+      "thumbnailKey": "events/1e4a9c3ac0d26a45cebdd8d7fb989d4538ca6953a492a70bed6e6b6889e6ca21.png"
+    },
+    {
+      "id": 201851,
+      "title": "[オンライン] 水戸エンジニア勉強会 #17 もくもく & LT会",
+      "number": "17",
+      "startsAt": "2021-01-23T04:00:00Z",
+      "endsAt": "2021-01-23T09:00:00Z",
+      "url": "https://mito-web-engineer.connpass.com/event/201851/",
+      "place": "オンライン",
+      "address": "オンライン",
+      "tags": [
+        "もくもく会"
+      ],
+      "summary": "開催案内・公開資料はconnpassをご覧ください。",
+      "status": "scheduled",
+      "registrationCount": 8,
+      "capacity": 10,
+      "attendanceCheckedAt": "2026-10-19T02:17:51.462Z",
+      "thumbnailKey": "events/1e4a9c3ac0d26a45cebdd8d7fb989d4538ca6953a492a70bed6e6b6889e6ca21.png"
+    },
+    {
+      "id": 200032,
+      "title": "水戸エンジニア勉強会 #17 もくもく & LT会",
+      "number": "17",
+      "startsAt": "2021-01-23T04:00:00Z",
+      "endsAt": "2021-01-23T09:00:00Z",
+      "url": "https://mito-web-engineer.connpass.com/event/200032/",
+      "place": "オンライン",
+      "address": "オンライン",
+      "tags": [
+        "もくもく会"
+      ],
+      "summary": "開催案内・公開資料はconnpassをご覧ください。",
+      "status": "cancelled",
+      "registrationCount": 3,
+      "capacity": 6,
+      "attendanceCheckedAt": "2026-10-19T02:17:51.462Z",
+      "thumbnailKey": "events/1e4a9c3ac0d26a45cebdd8d7fb989d4538ca6953a492a70bed6e6b6889e6ca21.png"
+    },
+    {
+      "id": 198292,
+      "title": "水戸エンジニア勉強会 #16 もくもく & LT会",
+      "number": "16",
+      "startsAt": "2020-12-19T04:00:00Z",
+      "endsAt": "2020-12-19T09:00:00Z",
+      "url": "https://mito-web-engineer.connpass.com/event/198292/",
+      "place": "茨城県水戸市南町3-3-35",
+      "address": "茨城県水戸市南町3-3-35",
+      "tags": [
+        "もくもく会"
+      ],
+      "summary": "開催案内・公開資料はconnpassをご覧ください。",
+      "status": "scheduled",
+      "registrationCount": 6,
+      "capacity": 6,
+      "attendanceCheckedAt": "2026-10-19T02:17:51.462Z",
+      "thumbnailKey": "events/1e4a9c3ac0d26a45cebdd8d7fb989d4538ca6953a492a70bed6e6b6889e6ca21.png"
+    },
+    {
+      "id": 193210,
+      "title": "水戸エンジニア勉強会 #15 もくもく & LT会",
+      "number": "15",
+      "startsAt": "2020-11-28T04:00:00Z",
+      "endsAt": "2020-11-28T09:00:00Z",
+      "url": "https://mito-web-engineer.connpass.com/event/193210/",
+      "place": "茨城県水戸市南町3-3-35",
+      "address": "茨城県水戸市南町3-3-35",
+      "tags": [
+        "もくもく会"
+      ],
+      "summary": "開催案内・公開資料はconnpassをご覧ください。",
+      "status": "scheduled",
+      "registrationCount": 6,
+      "capacity": 5,
+      "attendanceCheckedAt": "2026-10-19T02:17:51.462Z",
+      "thumbnailKey": "events/1e4a9c3ac0d26a45cebdd8d7fb989d4538ca6953a492a70bed6e6b6889e6ca21.png"
+    },
+    {
+      "id": 190166,
+      "title": "水戸エンジニア勉強会 #14 もくもく & LT会",
+      "number": "14",
+      "startsAt": "2020-10-03T04:00:00Z",
+      "endsAt": "2020-10-03T09:00:00Z",
+      "url": "https://mito-web-engineer.connpass.com/event/190166/",
+      "place": "茨城県水戸市南町3-3-35",
+      "address": "茨城県水戸市南町3-3-35",
+      "tags": [
+        "もくもく会"
+      ],
+      "summary": "開催案内・公開資料はconnpassをご覧ください。",
+      "status": "scheduled",
+      "registrationCount": 4,
+      "capacity": 5,
+      "attendanceCheckedAt": "2026-10-19T02:17:51.462Z",
+      "thumbnailKey": "events/1e4a9c3ac0d26a45cebdd8d7fb989d4538ca6953a492a70bed6e6b6889e6ca21.png"
+    },
+    {
+      "id": 188079,
+      "title": "水戸エンジニア勉強会 #13 もくもく & LT会",
+      "number": "13",
+      "startsAt": "2020-09-12T04:00:00Z",
+      "endsAt": "2020-09-12T09:00:00Z",
+      "url": "https://mito-web-engineer.connpass.com/event/188079/",
+      "place": "茨城県水戸市南町3-3-35",
+      "address": "茨城県水戸市南町3-3-35",
+      "tags": [
+        "もくもく会"
+      ],
+      "summary": "開催案内・公開資料はconnpassをご覧ください。",
+      "status": "scheduled",
+      "registrationCount": 5,
+      "capacity": 5,
+      "attendanceCheckedAt": "2026-10-19T02:17:51.462Z",
+      "thumbnailKey": "events/1e4a9c3ac0d26a45cebdd8d7fb989d4538ca6953a492a70bed6e6b6889e6ca21.png"
+    },
+    {
+      "id": 184345,
+      "title": "水戸エンジニア勉強会 #12 もくもく & LT会",
+      "number": "12",
+      "startsAt": "2020-08-22T04:00:00Z",
+      "endsAt": "2020-08-22T09:00:00Z",
+      "url": "https://mito-web-engineer.connpass.com/event/184345/",
+      "place": "茨城県水戸市南町3-3-35",
+      "address": "茨城県水戸市南町3-3-35",
+      "tags": [
+        "もくもく会"
+      ],
+      "summary": "開催案内・公開資料はconnpassをご覧ください。",
+      "status": "scheduled",
+      "registrationCount": 5,
+      "capacity": 5,
+      "attendanceCheckedAt": "2026-10-19T02:17:51.462Z",
+      "thumbnailKey": "events/1e4a9c3ac0d26a45cebdd8d7fb989d4538ca6953a492a70bed6e6b6889e6ca21.png"
+    },
+    {
+      "id": 180356,
+      "title": "水戸エンジニア勉強会 #11 もくもく & LT会",
+      "number": "11",
+      "startsAt": "2020-07-11T04:00:00Z",
+      "endsAt": "2020-07-11T09:00:00Z",
+      "url": "https://mito-web-engineer.connpass.com/event/180356/",
+      "place": "茨城県水戸市南町3-3-35",
+      "address": "茨城県水戸市南町3-3-35",
+      "tags": [
+        "もくもく会"
+      ],
+      "summary": "開催案内・公開資料はconnpassをご覧ください。",
+      "status": "scheduled",
+      "registrationCount": 4,
+      "capacity": 5,
+      "attendanceCheckedAt": "2026-10-19T02:17:51.462Z",
+      "thumbnailKey": "events/1e4a9c3ac0d26a45cebdd8d7fb989d4538ca6953a492a70bed6e6b6889e6ca21.png"
+    },
+    {
+      "id": 177199,
+      "title": "水戸エンジニア勉強会 #10 オンラインもくもく & LT会",
+      "number": "10",
+      "startsAt": "2020-06-13T04:00:00Z",
+      "endsAt": "2020-06-13T08:00:00Z",
+      "url": "https://mito-web-engineer.connpass.com/event/177199/",
+      "place": "オンライン",
+      "address": "オンライン",
+      "tags": [
+        "もくもく会"
+      ],
+      "summary": "開催案内・公開資料はconnpassをご覧ください。",
+      "status": "scheduled",
+      "registrationCount": 2,
+      "capacity": 23,
+      "attendanceCheckedAt": "2026-10-19T02:17:51.462Z",
+      "thumbnailKey": "events/1e4a9c3ac0d26a45cebdd8d7fb989d4538ca6953a492a70bed6e6b6889e6ca21.png"
+    },
+    {
+      "id": 175205,
+      "title": "水戸エンジニア勉強会 #9 オンラインもくもく & LT会",
+      "number": "9",
+      "startsAt": "2020-05-09T04:00:00Z",
+      "endsAt": "2020-05-09T08:00:00Z",
+      "url": "https://mito-web-engineer.connpass.com/event/175205/",
+      "place": "オンライン",
+      "address": "オンライン",
+      "tags": [
+        "もくもく会"
+      ],
+      "summary": "開催案内・公開資料はconnpassをご覧ください。",
+      "status": "scheduled",
+      "registrationCount": 4,
+      "capacity": 23,
+      "attendanceCheckedAt": "2026-10-19T02:17:51.462Z",
+      "thumbnailKey": "events/1e4a9c3ac0d26a45cebdd8d7fb989d4538ca6953a492a70bed6e6b6889e6ca21.png"
+    },
+    {
+      "id": 171935,
+      "title": "水戸エンジニア勉強会 #8 オンラインもくもく & LT会",
+      "number": "8",
+      "startsAt": "2020-04-12T04:00:00Z",
+      "endsAt": "2020-04-12T08:00:00Z",
+      "url": "https://mito-web-engineer.connpass.com/event/171935/",
+      "place": "オンライン",
+      "address": "オンライン",
+      "tags": [
+        "もくもく会"
+      ],
+      "summary": "開催案内・公開資料はconnpassをご覧ください。",
+      "status": "scheduled",
+      "registrationCount": 2,
+      "capacity": 23,
+      "attendanceCheckedAt": "2026-10-19T02:17:51.462Z",
+      "thumbnailKey": "events/1e4a9c3ac0d26a45cebdd8d7fb989d4538ca6953a492a70bed6e6b6889e6ca21.png"
+    },
+    {
+      "id": 171570,
+      "title": "水戸エンジニア勉強会 #8 もくもく & LT会",
+      "number": "8",
+      "startsAt": "2020-04-12T04:00:00Z",
+      "endsAt": "2020-04-12T09:00:00Z",
+      "url": "https://mito-web-engineer.connpass.com/event/171570/",
+      "place": "茨城県水戸市南町3-3-35",
+      "address": "茨城県水戸市南町3-3-35",
+      "tags": [
+        "もくもく会"
+      ],
+      "summary": "開催案内・公開資料はconnpassをご覧ください。",
+      "status": "cancelled",
+      "registrationCount": 5,
+      "capacity": 12,
+      "attendanceCheckedAt": "2026-10-19T02:17:51.462Z",
+      "thumbnailKey": "events/1e4a9c3ac0d26a45cebdd8d7fb989d4538ca6953a492a70bed6e6b6889e6ca21.png"
+    },
+    {
+      "id": 170195,
+      "title": "水戸エンジニア勉強会 #7 オンラインもくもく & LT会",
+      "number": "7",
+      "startsAt": "2020-03-14T04:00:00Z",
+      "endsAt": "2020-03-14T07:00:00Z",
+      "url": "https://mito-web-engineer.connpass.com/event/170195/",
+      "place": "オンライン",
+      "address": "オンライン",
+      "tags": [
+        "もくもく会"
+      ],
+      "summary": "開催案内・公開資料はconnpassをご覧ください。",
+      "status": "scheduled",
+      "registrationCount": 4,
+      "capacity": null,
+      "attendanceCheckedAt": "2026-10-19T02:17:51.462Z",
+      "thumbnailKey": "events/1e4a9c3ac0d26a45cebdd8d7fb989d4538ca6953a492a70bed6e6b6889e6ca21.png"
+    },
+    {
+      "id": 168471,
+      "title": "水戸エンジニア勉強会 #7 もくもく & LT会",
+      "number": "7",
+      "startsAt": "2020-03-14T04:00:00Z",
+      "endsAt": "2020-03-14T09:00:00Z",
+      "url": "https://mito-web-engineer.connpass.com/event/168471/",
+      "place": "茨城県水戸市南町3-3-35",
+      "address": "茨城県水戸市南町3-3-35",
+      "tags": [
+        "もくもく会"
+      ],
+      "summary": "開催案内・公開資料はconnpassをご覧ください。",
+      "status": "cancelled",
+      "registrationCount": 7,
+      "capacity": 12,
+      "attendanceCheckedAt": "2026-10-19T02:17:51.462Z",
+      "thumbnailKey": "events/1e4a9c3ac0d26a45cebdd8d7fb989d4538ca6953a492a70bed6e6b6889e6ca21.png"
+    },
+    {
+      "id": 164761,
+      "title": "水戸エンジニア勉強会 #6 もくもく & LT会",
+      "number": "6",
+      "startsAt": "2020-02-16T06:00:00Z",
+      "endsAt": "2020-02-16T10:00:00Z",
+      "url": "https://mito-web-engineer.connpass.com/event/164761/",
+      "place": "茨城県水戸市南町3-3-35",
+      "address": "茨城県水戸市南町3-3-35",
+      "tags": [
+        "もくもく会"
+      ],
+      "summary": "開催案内・公開資料はconnpassをご覧ください。",
+      "status": "scheduled",
+      "registrationCount": 7,
+      "capacity": 12,
+      "attendanceCheckedAt": "2026-10-19T02:17:51.462Z",
+      "thumbnailKey": "events/1e4a9c3ac0d26a45cebdd8d7fb989d4538ca6953a492a70bed6e6b6889e6ca21.png"
+    },
+    {
+      "id": 160443,
+      "title": "水戸エンジニア勉強会 #5 もくもく& LT会",
+      "number": "5",
+      "startsAt": "2020-01-25T05:00:00Z",
+      "endsAt": "2020-01-25T09:00:00Z",
+      "url": "https://mito-web-engineer.connpass.com/event/160443/",
+      "place": "茨城県水戸市南町3-3-35",
+      "address": "茨城県水戸市南町3-3-35",
+      "tags": [
+        "もくもく会"
+      ],
+      "summary": "開催案内・公開資料はconnpassをご覧ください。",
+      "status": "scheduled",
+      "registrationCount": 10,
+      "capacity": 11,
+      "attendanceCheckedAt": "2026-10-19T02:17:51.462Z",
+      "thumbnailKey": "events/1e4a9c3ac0d26a45cebdd8d7fb989d4538ca6953a492a70bed6e6b6889e6ca21.png"
+    },
+    {
+      "id": 153538,
+      "title": "水戸エンジニア勉強会 #4 もくもく& LT会",
+      "number": "4",
+      "startsAt": "2019-11-24T05:00:00Z",
+      "endsAt": "2019-11-24T09:00:00Z",
+      "url": "https://mito-web-engineer.connpass.com/event/153538/",
+      "place": "茨城県水戸市南町3-3-35",
+      "address": "茨城県水戸市南町3-3-35",
+      "tags": [
+        "もくもく会"
+      ],
+      "summary": "開催案内・公開資料はconnpassをご覧ください。",
+      "status": "scheduled",
+      "registrationCount": 9,
+      "capacity": 15,
+      "attendanceCheckedAt": "2026-10-19T02:17:51.462Z",
+      "thumbnailKey": "events/1e4a9c3ac0d26a45cebdd8d7fb989d4538ca6953a492a70bed6e6b6889e6ca21.png"
+    },
+    {
+      "id": 146626,
+      "title": "水戸エンジニア勉強会 #3 もくもく& LT会",
+      "number": "3",
+      "startsAt": "2019-10-26T05:00:00Z",
+      "endsAt": "2019-10-26T09:00:00Z",
+      "url": "https://mito-web-engineer.connpass.com/event/146626/",
+      "place": "茨城県水戸市南町3-3-35",
+      "address": "茨城県水戸市南町3-3-35",
+      "tags": [
+        "もくもく会"
+      ],
+      "summary": "開催案内・公開資料はconnpassをご覧ください。",
+      "status": "scheduled",
+      "registrationCount": 7,
+      "capacity": 13,
+      "attendanceCheckedAt": "2026-10-19T02:17:51.462Z",
+      "thumbnailKey": "events/1e4a9c3ac0d26a45cebdd8d7fb989d4538ca6953a492a70bed6e6b6889e6ca21.png"
+    },
+    {
+      "id": 142955,
+      "title": "水戸エンジニアもくもく会",
+      "number": "142955",
+      "startsAt": "2019-09-01T05:15:00Z",
+      "endsAt": "2019-09-01T09:00:00Z",
+      "url": "https://mito-web-engineer.connpass.com/event/142955/",
+      "place": "茨城県水戸市笠原町１１８９－２　グリーンヒル西野ビル",
+      "address": "茨城県水戸市笠原町１１８９－２　グリーンヒル西野ビル",
+      "tags": [
+        "もくもく会"
+      ],
+      "summary": "開催案内・公開資料はconnpassをご覧ください。",
+      "status": "scheduled",
+      "registrationCount": 9,
+      "capacity": 11,
+      "attendanceCheckedAt": "2026-10-19T02:17:51.462Z",
+      "thumbnailKey": "events/1e4a9c3ac0d26a45cebdd8d7fb989d4538ca6953a492a70bed6e6b6889e6ca21.png"
+    },
+    {
+      "id": 139604,
+      "title": "水戸フロントエンドもくもく会",
+      "number": "139604",
+      "startsAt": "2019-08-04T01:00:00Z",
+      "endsAt": "2019-08-04T04:30:00Z",
+      "url": "https://mito-web-engineer.connpass.com/event/139604/",
+      "place": "茨城県水戸市南町3-3-35",
+      "address": "茨城県水戸市南町3-3-35",
+      "tags": [
+        "もくもく会"
+      ],
+      "summary": "開催案内・公開資料はconnpassをご覧ください。",
+      "status": "scheduled",
+      "registrationCount": 8,
+      "capacity": 10,
+      "attendanceCheckedAt": "2026-10-19T02:17:51.462Z",
+      "thumbnailKey": "events/7a618d534e7ec135b94891b370c95017d712873c8c41bfd80cb9ae36bb8258f5.png"
+    },
+    {
+      "id": 135924,
+      "title": "水戸フロントエンドもくもく会",
+      "number": "135924",
+      "startsAt": "2019-07-20T05:00:00Z",
+      "endsAt": "2019-07-20T08:30:00Z",
+      "url": "https://mito-web-engineer.connpass.com/event/135924/",
+      "place": "茨城県水戸市南町3-3-35",
+      "address": "茨城県水戸市南町3-3-35",
+      "tags": [
+        "もくもく会"
+      ],
+      "summary": "開催案内・公開資料はconnpassをご覧ください。",
+      "status": "cancelled",
+      "registrationCount": 5,
+      "capacity": 5,
+      "attendanceCheckedAt": "2026-10-19T02:17:51.462Z",
+      "thumbnailKey": "events/7a618d534e7ec135b94891b370c95017d712873c8c41bfd80cb9ae36bb8258f5.png"
     }
   ]
 }

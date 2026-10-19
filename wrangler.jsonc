@@ -17,7 +17,8 @@
       "/reports",
       "/reports/*",
       "/api/*",
-      "/sitemap.xml"
+      "/sitemap.xml",
+      "/media/events/*"
     ]
   },
   "d1_databases": [
@@ -47,5 +48,11 @@
   },
   "observability": {
     "enabled": true
-  }
+  },
+  "r2_buckets": [
+    {
+      "binding": "EVENT_IMAGES",
+      "bucket_name": "ibaraki-dev-event-images"
+    }
+  ]
 }

@@ -5,7 +5,7 @@ import data from '../data/events.json';
 import {faq} from '../data/faq';
 import {selectFeatured} from '../../scripts/events.mjs';
 const latest=selectFeatured(data.events)!;
-const past=data.events.filter(e=>e.id!==latest.id).slice(0,3);
+const past=data.events.filter(e=>e.status!=='cancelled'&&e.id!==latest.id&&Date.parse(e.endsAt)<Date.now()).slice(0,3);
 const time=(v:string)=>new Intl.DateTimeFormat('ja-JP',{timeZone:'Asia/Tokyo',hour:'2-digit',minute:'2-digit'}).format(new Date(v));
 const weekday=new Intl.DateTimeFormat('en-US',{timeZone:'Asia/Tokyo',weekday:'short'}).format(new Date(latest.startsAt)).toUpperCase();
 ---

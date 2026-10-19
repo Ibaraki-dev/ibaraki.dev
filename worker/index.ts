@@ -1,3 +1,5 @@
+import {renderEventCard} from '../scripts/event-card.mjs';
+import {imageKeyPattern} from '../scripts/event-images.mjs';
 import {events,runScheduled,type Event} from './data.ts';
 import {escapeHtml as h,type Report} from './report.ts';
 import {selectFeatured} from '../scripts/events.mjs';
@@ -10,13 +12,20 @@ const clock=icon('<circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/>');
 const pin=icon('<path d="M20 10c0 6-8 12-8 12S4 16 4 10a8 8 0 1 1 16 0Z"/><circle cx="12" cy="10" r="2.5"/>');
 type Published={event_id:number;body:string;published_at:string;updated_at:string};
 const headers={'Cache-Control':'no-store','X-Content-Type-Options':'nosniff','Referrer-Policy':'strict-origin-when-cross-origin','X-Frame-Options':'DENY','Permissions-Policy':'camera=(), microphone=(), geolocation=()'};
-function links(event:Event,reported:boolean){return `<div class="event-links">${reported?`<a class="text-link" href="/reports/${event.id}/">開催レポート <span aria-hidden="true">→</span></a>`:''}<a class="text-link" href="${h(event.url)}">connpass ${arrow}</a></div>`;}
-function row(event:Event,reported:boolean){return `<article class="event-row" data-year="${date(event.startsAt).slice(0,4)}" data-search="${h(`${event.title} ${event.place} ${event.tags.join(' ')}`)}"><time datetime="${h(event.startsAt)}">${date(event.startsAt).replaceAll('-','.')}</time><a href="${h(event.url)}"><h2>${h(event.title)}</h2><p class="venue">${h(event.place)}</p></a>${links(event,reported)}</article>`;}
 function featured(event:Event){const ended=Date.now()>=Date.parse(event.endsAt);const today=date(event.startsAt)===date(new Date().toISOString());return `<section class="featured wrap" id="next" data-event-start="${h(event.startsAt)}" data-event-end="${h(event.endsAt)}"><div class="date-block"><p id="event-status">${ended?'直近の開催':today?'本日の開催':'次回の開催'}</p><div><time datetime="${h(event.startsAt)}">${date(event.startsAt).slice(5).replace('-','.')}</time><span>${new Intl.DateTimeFormat('en-US',{timeZone:'Asia/Tokyo',weekday:'short'}).format(new Date(event.startsAt)).toUpperCase()}</span></div></div><div class="event-info"><h2><span>#${h(event.number)}</span> ${h(event.title.replace(/^ibaraki\.dev\s*#[^\s]+\s*/i,''))}</h2><p class="event-meta"><span>${clock}${time(event.startsAt)}–${time(event.endsAt)}</span><span>${pin}${h(event.place)}</span></p></div><a class="button" id="event-link" href="${h(event.url)}"><span>${ended?'開催ページを見る':'connpass で参加'}</span>${arrow}</a></section>`;}
 function detail(event:Event,published:Published){const body:Report=JSON.parse(published.body);const list=(items:string[])=>`<ul class="report-items">${items.map(item=>`<li>${h(item)}</li>`).join('')}</ul>`;return `<article class="report-detail"><p class="breadcrumbs"><a href="/reports/">開催レポート</a> / #${h(event.number)}</p><p class="eyebrow">MEETUP NOTES · ${date(event.startsAt).replaceAll('-','.')}</p><h1>${h(event.title)}</h1><p class="report-venue">${h(event.place)}</p>${body.results.length?`<section><h2>やったこと</h2>${list(body.results)}</section>`:'<p class="report-empty">やったことの記録は、まだありません。</p>'}${body.plans.length?`<section><h2>やること</h2>${list(body.plans)}</section>`:''}${body.materials.length?`<section><h2>公開資料</h2><ul class="report-items">${body.materials.map(m=>`<li><a href="${h(m.url)}" rel="noopener noreferrer">${h(m.title)} ${arrow}</a></li>`).join('')}</ul></section>`:''}<div class="report-footnote"><p>参加者の「やること・やったこと」をもとに自動で要約しています。</p><p>更新：<time datetime="${h(published.updated_at)}">${date(published.updated_at)} ${time(published.updated_at)}</time> · <a href="/privacy/#corrections">訂正・削除のご相談</a></p></div><a class="text-link" href="${h(event.url)}">connpass の開催ページ ${arrow}</a></article>`;}
 async function render(request:Request,env:Env):Promise<Response>{
   const url=new URL(request.url);const path=url.pathname;
   if(request.method!=='GET'&&request.method!=='HEAD')return new Response('Method not allowed',{status:405,headers:{...headers,Allow:'GET, HEAD'}});
+  if(path.startsWith('/media/events/')){
+    const key=path.slice('/media/'.length);
+    if(!imageKeyPattern.test(key))return new Response('Not found',{status:404,headers});
+    const object=await env.EVENT_IMAGES.get(key);
+    if(!object)return new Response('Not found',{status:404,headers});
+    const imageHeaders=new Headers({'Content-Type':object.httpMetadata?.contentType||'application/octet-stream','Cache-Control':'public, max-age=31536000, immutable','ETag':object.httpEtag,'X-Content-Type-Options':'nosniff'});
+    if(request.headers.get('if-none-match')===object.httpEtag)return new Response(null,{status:304,headers:imageHeaders});
+    return new Response(request.method==='HEAD'?null:object.body,{headers:imageHeaders});
+  }
   if(['/reports','/events'].includes(path)||/^\/reports\/\d+$/.test(path)){url.pathname+='/';return Response.redirect(url.href,308);}
   if(!['/','/events/','/reports/','/sitemap.xml','/api/events'].includes(path)&&!path.startsWith('/reports/'))return env.ASSETS.fetch(request);
   const all=await events(env.REPORT_DB);
@@ -49,13 +58,13 @@ async function render(request:Request,env:Env):Promise<Response>{
       .on('link[rel="canonical"]',{element(e){e.setAttribute('href',new URL(path,env.SITE_URL).href);}})
       .on('meta[property="og:url"]',{element(e){e.setAttribute('content',new URL(path,env.SITE_URL).href);}});
   } else if(path==='/events/'){
-    rewriter.on('#event-list',{element(e){e.setInnerContent(all.map(event=>row(event,ids.has(event.id))).join(''),{html:true});}})
+    rewriter.on('#event-list',{element(e){e.setInnerContent(all.map(event=>renderEventCard(event,ids.has(event.id))).join(''),{html:true});}})
       .on('#result-count',{element(e){e.setInnerContent(`${all.length}件の開催情報`);}})
       .on('#year',{element(e){e.setInnerContent('<option value="all">すべての年</option>'+[...new Set(all.map(event=>date(event.startsAt).slice(0,4)))].map(y=>`<option value="${y}">${y}年</option>`).join(''),{html:true});}});
   } else if(path==='/'){
     const event=selectFeatured(all) as Event;
     rewriter.on('#next',{element(e){e.replace(featured(event),{html:true});}})
-      .on('.recent-list',{element(e){e.setInnerContent(all.filter(item=>item.id!==event.id&&Date.parse(item.endsAt)<Date.now()).slice(0,3).map(item=>`<a href="${ids.has(item.id)?`/reports/${item.id}/`:h(item.url)}"><span>${h(item.title)}</span><time datetime="${h(item.startsAt)}">${date(item.startsAt).replaceAll('-','.')}</time>${ids.has(item.id)?'→':arrow}</a>`).join(''),{html:true});}});
+      .on('.recent-list',{element(e){e.setInnerContent(all.filter(item=>item.status!=='cancelled'&&item.id!==event.id&&Date.parse(item.endsAt)<Date.now()).slice(0,3).map(item=>`<a href="${ids.has(item.id)?`/reports/${item.id}/`:h(item.url)}"><span>${h(item.title)}</span><time datetime="${h(item.startsAt)}">${date(item.startsAt).replaceAll('-','.')}</time>${ids.has(item.id)?'→':arrow}</a>`).join(''),{html:true});}});
   }
   const assetHeaders=new Headers(request.headers);
   for(const key of ['if-none-match','if-modified-since','range'])assetHeaders.delete(key);

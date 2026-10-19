@@ -1,7 +1,8 @@
 import seed from '../src/data/events.json' with {type:'json'};
+import {storeEventImage} from '../scripts/event-images.mjs';
 import {normalizeEvent,mergeEvents} from '../scripts/events.mjs';
 import {eligible,prepareSource,publicMaterialCandidates,sourceHash,summarize} from './report.ts';
-export type Event = typeof seed.events[number];
+export type Event = typeof seed.events[number] & {thumbnailKey?:string;thumbnailFingerprint?:string};
 export async function events(db:D1Database):Promise<Event[]> {
   const rows=await db.prepare('SELECT data FROM public_events ORDER BY id DESC LIMIT 1000').all<{data:string}>();
   return mergeEvents(seed.events,rows.results.map(row=>JSON.parse(row.data)));
@@ -19,13 +20,26 @@ export async function syncEvents(env:Env & {CONNPASS_API_KEY?:string}, now:numbe
   const last=await env.REPORT_DB.prepare("SELECT last_success FROM jobs WHERE name='connpass'").first<{last_success:string}>();
   if(last?.last_success && now-Date.parse(last.last_success)<6*60*60*1000) return;
   const incoming:Event[]=[];
+  const known=new Map((await events(env.REPORT_DB)).map(e=>[e.id,e]));
+  const images=new Map<string,Promise<{thumbnailKey?:string;thumbnailFingerprint?:string}>>();
   for(let start=1;start<=1000;start+=100){
     const url=new URL('https://connpass.com/api/v2/events/');
     for(const [k,v] of Object.entries({subdomain:'mito-web-engineer',count:'100',start:String(start),order:'2'}))url.searchParams.set(k,v);
     const response=await fetch(url,{headers:{'X-API-Key':env.CONNPASS_API_KEY},signal:AbortSignal.timeout(20000),redirect:'error'});
     const body=await boundedJson(response);
     if(!Array.isArray(body.events)||!Number.isSafeInteger(body.results_available)||!body.events.length||body.results_available>1000)throw new Error('connpass_shape');
-    incoming.push(...body.events.map(normalizeEvent));
+    for(const raw of body.events){
+      const normalized=normalizeEvent(raw),previous=known.get(raw.id);
+      let image={thumbnailKey:previous?.thumbnailKey,thumbnailFingerprint:previous?.thumbnailFingerprint};
+      if(raw.image_url){
+        try{
+          const cacheKey=String(raw.image_url)+'|'+String(raw.updated_at||'');
+          if(!images.has(cacheKey))images.set(cacheKey,storeEventImage(env.EVENT_IMAGES,raw.image_url,previous,raw.updated_at||''));
+          image={...image,...await images.get(cacheKey)};
+        }catch{console.warn(JSON.stringify({job:'event_image',eventId:raw.id,error:'image_unavailable'}));}
+      }else image={thumbnailKey:undefined,thumbnailFingerprint:undefined};
+      incoming.push({...normalized,...image} as Event);
+    }
     if(start+body.events.length>body.results_available)break;
     await new Promise(resolve=>setTimeout(resolve,1100));
   }
@@ -59,7 +73,7 @@ export async function runScheduled(env:Env & {CONNPASS_API_KEY?:string},now=Date
   try {
     try{await syncEvents(env,now);}catch{failures++;console.error(JSON.stringify({job:'connpass',error:'sync_failed'}));await env.REPORT_DB.prepare("INSERT INTO jobs(name,last_error) VALUES('connpass','sync_failed') ON CONFLICT(name) DO UPDATE SET last_error=excluded.last_error").run();}
     const all=await events(env.REPORT_DB);
-    const targets=all.filter(event=>eligible(event.endsAt,now,env.REPORTS_START_DATE,event.startsAt));
+    const targets=all.filter(event=>event.status!=='cancelled'&&eligible(event.endsAt,now,env.REPORTS_START_DATE,event.startsAt));
     if(targets.length>100)throw new Error('event_limit');
     for(const event of targets){
       try{
