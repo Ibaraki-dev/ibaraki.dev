@@ -1,6 +1,6 @@
 # connpass の日次同期
 
-Cloudflare Browser Run（旧 Browser Rendering）+ Puppeteer で公開 DOM を取得する。
+Cloudflare Browser Run（旧 Browser Rendering）+ Playwright (`@cloudflare/playwright`) で公開 DOM を取得する。
 対象は `https://mito-web-engineer.connpass.com/event/` の一覧と、そこに掲載されたイベント詳細だけ。Chrome のログアウト状態で確認した DOM セレクタを使用する。
 
 - 毎日 09:15 JST。D1 の原子的な取得権確保で UTC 日ごとに最大1回。失敗時も同日中は再試行しない。
@@ -17,6 +17,8 @@ Chrome では公開ページを閲覧できるが、Cloudflare Browser Run か�
 
 connpass 側で Cloudflare Browser Run からの対象ページアクセスが許可された後、公開一覧・詳細の取得検証を行い、`wrangler.jsonc` の同変数を文字列 `true` にしてデプロイする。既存の毎時レポート処理は継続する。Browser binding がある構成では旧 API 同期は実行しない。
 
-## 依存ライブラリの残件
+## 実装
 
-`@cloudflare/puppeteer@1.4.0` の間接依存 `extract-zip@2.0.1` に既知の High の指摘があり、修正版は未提供。関連する npm audit 表示は3パッケージ。これはローカルブラウザのダウンロード・ZIP 展開用依存で、この Worker は Cloudflare のリモートブラウザを使い、ZIP のダウンロード・展開 API は使用しない。修正版公開時に更新する。`basic-ftp` は修正済み 6.2.3 に固定している。
+Cloudflare 公式の Playwright `launch(env.BROWSER)` を使用。BrowserContext で JavaScript と Service Worker を無効化し、`context.route()` で対象以外の通信を遮断する。取得後の HTML の検証・公開項目の抽出は既存の共通パーサーを利用する。
+
+Puppeteer と、それに付随していた ZIP 展開・FTP 用の間接依存は削除した。

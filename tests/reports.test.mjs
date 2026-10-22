@@ -109,8 +109,8 @@ test('browser failure keeps public data and daily attempt cannot be repeated',as
 });
 test('disabled browser sync never launches browser',async()=>{const {env}=fixture();await scrapeConnpass(env,Date.now(),async()=>{throw new Error('must not launch');});assert.equal(env.REPORT_DB.db.prepare("SELECT * FROM jobs WHERE name='connpass-browser'").get(),undefined);});
 test('WAF response stops before parsing and closes the browser',async()=>{
- const {env}=fixture();env.CONNPASS_BROWSER_ENABLED='true';env.BROWSER={};let closed=false,read=false;
- const browser={async close(){closed=true;},async newPage(){return {async setJavaScriptEnabled(){},async setRequestInterception(){},on(){},async goto(){return {status:()=>202,headers:()=>({'x-amzn-waf-action':'challenge'})};},async content(){read=true;return '';}};}};
- await scrapeConnpass(env,Date.now(),async()=>browser);assert.equal(closed,true);assert.equal(read,false);
+ const {env}=fixture();env.CONNPASS_BROWSER_ENABLED='true';env.BROWSER={};let closed=false,read=false;const frame={};const decisions=[];
+ const browser={async close(){closed=true;},async newContext(options){assert.deepEqual(options,{javaScriptEnabled:false,serviceWorkers:'block'});return {async route(_pattern,handler){for(const [url,main] of [['https://mito-web-engineer.connpass.com/event/',true],['https://evil.example/event/',true],['https://mito-web-engineer.connpass.com/event/',false]])await handler({request:()=>({url:()=>url,isNavigationRequest:()=>true,frame:()=>main?frame:{}}),continue:async()=>decisions.push('allow'),abort:async()=>decisions.push('block')});},async newPage(){return {mainFrame:()=>frame,async goto(){return {status:()=>202,headers:()=>({'x-amzn-waf-action':'challenge'})};},async content(){read=true;return '';}};}};}};
+ await scrapeConnpass(env,Date.now(),async()=>browser);assert.equal(closed,true);assert.equal(read,false);assert.deepEqual(decisions,['allow','block','block']);
  assert.equal(env.REPORT_DB.db.prepare('SELECT COUNT(*) AS n FROM public_events').get().n,1);
 });

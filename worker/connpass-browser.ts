@@ -1,10 +1,12 @@
-import puppeteer from '@cloudflare/puppeteer';
 import {parseList,parseDetail,scopedUrl,origin,complete} from '../scripts/connpass-html.mjs';
 import {storeEventImage} from '../scripts/event-images.mjs';
 import {events} from './data.ts';
 
+// Load the Workers-only runtime when a browser is actually needed.
+const launchBrowser=async (binding:Env['BROWSER'])=>(await import('@cloudflare/playwright')).launch(binding);
+
 // One attempt per UTC calendar day, including failures. No public HTTP trigger.
-export async function scrapeConnpass(env:Env,now=Date.now(),launch=puppeteer.launch){
+export async function scrapeConnpass(env:Env,now=Date.now(),launch=launchBrowser){
   if(String(env.CONNPASS_BROWSER_ENABLED)!=='true')return;
   const token=crypto.randomUUID();
   const claim=await env.REPORT_DB.prepare(`INSERT INTO jobs(name,lease_until,token) VALUES('connpass-browser',?,?) ON CONFLICT(name) DO UPDATE SET lease_until=excluded.lease_until,token=excluded.token WHERE jobs.lease_until<=? RETURNING token`).bind((Math.floor(now/86400000)+1)*86400000,token,now).first();
@@ -12,12 +14,14 @@ export async function scrapeConnpass(env:Env,now=Date.now(),launch=puppeteer.lau
   let browser;
   try{
     browser=await launch(env.BROWSER);
-    const page=await browser.newPage();
-    await page.setJavaScriptEnabled(false);
-    await page.setRequestInterception(true);
-    page.on('request',request=>{
-      // Only the expected top-level public document is needed; no analytics or subresources.
-      try{scopedUrl(request.url());if(request.isNavigationRequest()&&request.frame()===page.mainFrame())void request.continue();else void request.abort();}catch{void request.abort();}
+    const context=await browser.newContext({javaScriptEnabled:false,serviceWorkers:'block'});
+    const page=await context.newPage();
+    await context.route('**/*',async route=>{
+      const request=route.request();
+      // Only scoped top-level documents; no subresources or third-party requests.
+      let allowed=false;
+      try{scopedUrl(request.url());allowed=request.isNavigationRequest()&&request.frame()===page.mainFrame();}catch{}
+      if(allowed)await route.continue();else await route.abort();
     });
     let visited=0;
     async function read(url:string){
