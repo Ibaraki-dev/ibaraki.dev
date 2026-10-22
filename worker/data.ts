@@ -16,7 +16,7 @@ async function boundedJson(response:Response) {
   return JSON.parse(new TextDecoder().decode(data));
 }
 export async function syncEvents(env:Env & {CONNPASS_API_KEY?:string}, now:number) {
-  if(!env.CONNPASS_API_KEY) return;
+  if(env.BROWSER || !env.CONNPASS_API_KEY) return;
   const last=await env.REPORT_DB.prepare("SELECT last_success FROM jobs WHERE name='connpass'").first<{last_success:string}>();
   if(last?.last_success && now-Date.parse(last.last_success)<6*60*60*1000) return;
   const incoming:Event[]=[];
