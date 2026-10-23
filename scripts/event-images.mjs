@@ -8,7 +8,7 @@ export async function digest(bytes) {
 }
 export async function downloadImage(url, fetcher=fetch) {
   if(!imageSource(url))throw new Error('image_source');
-  const response=await fetcher(url,{redirect:'error',signal:AbortSignal.timeout(15000)});
+  const response=await fetcher(url,{redirect:'manual',signal:AbortSignal.timeout(15000)});
   if(!response.ok||!response.body)throw new Error('image_response');
   const max=5*1024*1024;
   if(Number(response.headers.get('content-length'))>max){await response.body.cancel();throw new Error('image_size');}

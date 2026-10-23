@@ -8,7 +8,7 @@ test('image ingestion restricts origins and rejects active content',async()=>{
  for(const value of ['http://media.connpass.com/a','https://media.connpass.com.evil.test/a','https://user:pass@media.connpass.com/a','https://127.0.0.1/a'])assert.equal(imageSource(value),null);
  await assert.rejects(downloadImage(url,async()=>new Response('<svg onload="alert(1)"/>')),/image_format/);
  await assert.rejects(downloadImage(url,async()=>new Response('x',{headers:{'content-length':'6000000'}})),/image_size/);
- let redirected;await downloadImage(url,async(_,options)=>{redirected=options.redirect;return new Response(png);});assert.equal(redirected,'error');
+ let redirected;await downloadImage(url,async(_,options)=>{redirected=options.redirect;return new Response(png);});assert.equal(redirected,'manual');
 });
 test('images are content addressed, deduplicated, and reused until source changes',async()=>{
  const objects=new Map();let downloads=0,puts=0;
@@ -22,4 +22,7 @@ test('cards escape source text, keep unknown counts distinct from zero, and disp
  const e={id:1,title:'A <script>',url:'https://connpass.com/event/1/',place:'Room "A"',startsAt:'2026-11-28T04:10:00Z',endsAt:'2026-11-28T09:00:00Z',tags:[],registrationCount:null,capacity:null,status:'cancelled',thumbnailKey:'../../secret'};
  let html=renderEventCard(e);assert.ok(!html.includes('<script>'));assert.match(html,/A &lt;script&gt;/);assert.match(html,/src="\/logo.svg"/);assert.match(html,/中止/);assert.match(html,/connpassで確認/);
  html=renderEventCard({...e,registrationCount:0,capacity:12});assert.match(html,/<strong>0<\/strong>/);assert.match(html,/13:10–18:00/);
+});
+test('redirect responses are rejected without following another host',async()=>{
+ await assert.rejects(()=>downloadImage('https://media.connpass.com/test.png',async(_url,options)=>{assert.equal(options.redirect,'manual');return new Response(null,{status:302,headers:{Location:'https://example.com/private'}});}),/image_response/);
 });

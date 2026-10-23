@@ -11,3 +11,9 @@ APIキーは `CONNPASS_API_KEY` というCloudflare Worker Secretに保存しま
 Secret未設定時は同期しません。`jobs`テーブルの`connpass`行で`last_success`・`last_error`を確認できます。既存の過去イベントはAPI失敗や一時的な検索結果の変化では削除しません。
 
 仕様: https://connpass.com/about/api/v2/
+
+## 接続検証（2026-10-23）
+
+Worker Secret の登録を確認済み。リモートWorkerから公式APIへアクセスするとCloudFrontのHTML形式のHTTP403が返るため、取得成功・キーの有効性は未確認。connpass側へCloudflare WorkersからのAPIアクセスを確認する必要がある。失敗した日のデータは更新されず、次回の日次同期まで保持する。
+
+Workersのfetchは`redirect: 'manual'`を使用し、3xxをエラーとして扱う。APIキーをリダイレクト先へ送信しない。
