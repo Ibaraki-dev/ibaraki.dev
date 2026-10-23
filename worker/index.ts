@@ -1,4 +1,4 @@
-import {scrapeConnpass} from './connpass-browser';
+import {syncEvents} from './data';
 import {renderEventCard} from '../scripts/event-card.mjs';
 import {imageKeyPattern} from '../scripts/event-images.mjs';
 import {events,runScheduled,type Event} from './data.ts';
@@ -79,5 +79,5 @@ export default {
   async fetch(request,env){
     try{return await render(request,env);}catch{console.error(JSON.stringify({job:'render',error:'data_unavailable'}));return new Response('ただいま読み込めません。少し待ってから再度お試しください。',{status:503,headers:{...headers,'Content-Type':'text/plain; charset=utf-8','Retry-After':'60'}});}
   },
-  async scheduled(controller,env){if(controller.cron==='15 0 * * *')await scrapeConnpass(env);else await runScheduled(env);}
+  async scheduled(controller,env){if(controller.cron==='15 0 * * *')await syncEvents(env,Date.now());else await runScheduled(env);}
 } satisfies ExportedHandler<Env & {CONNPASS_API_KEY?:string}>;

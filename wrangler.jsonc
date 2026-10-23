@@ -39,8 +39,7 @@
   },
   "vars": {
     "REPORTS_START_DATE": "2026-10-17",
-    "SITE_URL": "https://ibaraki-dev-website.ba068082.workers.dev",
-    "CONNPASS_BROWSER_ENABLED": "false"
+    "SITE_URL": "https://ibaraki-dev-website.ba068082.workers.dev"
   },
   "triggers": {
     "crons": [
@@ -56,8 +55,5 @@
       "binding": "EVENT_IMAGES",
       "bucket_name": "ibaraki-dev-event-images"
     }
-  ],
-  "browser": {
-    "binding": "BROWSER"
-  }
+  ]
 }

@@ -95,22 +95,19 @@ test('an expired worker cannot hide or overwrite a newer publication',async()=>{
  await assert.rejects(()=>runScheduled(f.env));assert.equal(f.report().status,'published');assert.match(f.report().body,/newer/);
 });
 
-// The actual production handler is exercised with a browser that rejects before any DOM is available.
-import {scrapeConnpass} from '../worker/connpass-browser.ts';
-test('browser failure keeps public data and daily attempt cannot be repeated',async()=>{
- const {env}=fixture();env.CONNPASS_BROWSER_ENABLED='true';env.BROWSER={};let calls=0;
- const launch=async()=>{calls++;throw new Error('upstream failure with secret value');};
- const before=JSON.stringify(env.REPORT_DB.db.prepare('SELECT * FROM public_events').all());
- const now=Date.parse('2026-10-22T00:15:00Z');
- await scrapeConnpass(env,now,launch);await scrapeConnpass(env,now+10000,launch);assert.equal(calls,1);
+test('API failure is sanitized and only attempted once per day',async(t)=>{
+ const {env}=fixture();env.CONNPASS_API_KEY='fixture-key';let calls=0;
+ t.mock.method(globalThis,'fetch',async(_url,options)=>{calls++;assert.equal(options.headers['X-API-Key'],'fixture-key');return new Response('secret upstream details',{status:401});});
+ const before=JSON.stringify(env.REPORT_DB.db.prepare('SELECT * FROM public_events').all());const now=Date.now();
+ await assert.rejects(()=>syncEvents(env,now),/connpass_sync_failed/);await syncEvents(env,now+1);assert.equal(calls,1);
  assert.equal(JSON.stringify(env.REPORT_DB.db.prepare('SELECT * FROM public_events').all()),before);
- assert.equal(env.REPORT_DB.db.prepare("SELECT last_error FROM jobs WHERE name='connpass-browser'").get().last_error,'scrape_unavailable');
- await scrapeConnpass(env,now+86400000,launch);assert.equal(calls,2);
+ assert.equal(env.REPORT_DB.db.prepare("SELECT last_error FROM jobs WHERE name='connpass'").get().last_error,'sync_failed');
 });
-test('disabled browser sync never launches browser',async()=>{const {env}=fixture();await scrapeConnpass(env,Date.now(),async()=>{throw new Error('must not launch');});assert.equal(env.REPORT_DB.db.prepare("SELECT * FROM jobs WHERE name='connpass-browser'").get(),undefined);});
-test('WAF response stops before parsing and closes the browser',async()=>{
- const {env}=fixture();env.CONNPASS_BROWSER_ENABLED='true';env.BROWSER={};let closed=false,read=false;const frame={};const decisions=[];
- const browser={async close(){closed=true;},async newContext(options){assert.deepEqual(options,{javaScriptEnabled:false,serviceWorkers:'block'});return {async route(_pattern,handler){for(const [url,main] of [['https://mito-web-engineer.connpass.com/event/',true],['https://evil.example/event/',true],['https://mito-web-engineer.connpass.com/event/',false]])await handler({request:()=>({url:()=>url,isNavigationRequest:()=>true,frame:()=>main?frame:{}}),continue:async()=>decisions.push('allow'),abort:async()=>decisions.push('block')});},async newPage(){return {mainFrame:()=>frame,async goto(){return {status:()=>202,headers:()=>({'x-amzn-waf-action':'challenge'})};},async content(){read=true;return '';}};}};}};
- await scrapeConnpass(env,Date.now(),async()=>browser);assert.equal(closed,true);assert.equal(read,false);assert.deepEqual(decisions,['allow','block','block']);
- assert.equal(env.REPORT_DB.db.prepare('SELECT COUNT(*) AS n FROM public_events').get().n,1);
+test('API incomplete or duplicate results never publish partial data',async(t)=>{
+ const raw={id:999,title:'Next',url:'https://mito-web-engineer.connpass.com/event/999/',group:{subdomain:'mito-web-engineer'},started_at:'2026-11-01T04:00:00Z',ended_at:'2026-11-01T09:00:00Z'};
+ for(const rows of [[raw],[raw,raw]]){
+ const {env}=fixture();env.CONNPASS_API_KEY='fixture-key';
+ t.mock.method(globalThis,'fetch',async()=>Response.json({results_available:2,events:rows}));
+ await assert.rejects(()=>syncEvents(env,Date.now()));assert.equal(env.REPORT_DB.db.prepare('SELECT COUNT(*) AS n FROM public_events').get().n,1);
+ }
 });

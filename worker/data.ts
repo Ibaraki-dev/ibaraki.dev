@@ -16,9 +16,12 @@ async function boundedJson(response:Response) {
   return JSON.parse(new TextDecoder().decode(data));
 }
 export async function syncEvents(env:Env & {CONNPASS_API_KEY?:string}, now:number) {
-  if(env.BROWSER || !env.CONNPASS_API_KEY) return;
-  const last=await env.REPORT_DB.prepare("SELECT last_success FROM jobs WHERE name='connpass'").first<{last_success:string}>();
-  if(last?.last_success && now-Date.parse(last.last_success)<6*60*60*1000) return;
+  if(!env.CONNPASS_API_KEY) return;
+  const token=crypto.randomUUID();
+  const claim=await env.REPORT_DB.prepare("INSERT INTO jobs(name,lease_until,token) VALUES('connpass',?,?) ON CONFLICT(name) DO UPDATE SET lease_until=excluded.lease_until,token=excluded.token WHERE jobs.lease_until<=? RETURNING token").bind((Math.floor(now/86400000)+1)*86400000,token,now).first();
+  if(!claim)return;
+  try {
+  let expected:number|undefined;
   const incoming:Event[]=[];
   const known=new Map((await events(env.REPORT_DB)).map(e=>[e.id,e]));
   const images=new Map<string,Promise<{thumbnailKey?:string;thumbnailFingerprint?:string}>>();
@@ -27,7 +30,9 @@ export async function syncEvents(env:Env & {CONNPASS_API_KEY?:string}, now:numbe
     for(const [k,v] of Object.entries({subdomain:'mito-web-engineer',count:'100',start:String(start),order:'2'}))url.searchParams.set(k,v);
     const response=await fetch(url,{headers:{'X-API-Key':env.CONNPASS_API_KEY},signal:AbortSignal.timeout(20000),redirect:'error'});
     const body=await boundedJson(response);
-    if(!Array.isArray(body.events)||!Number.isSafeInteger(body.results_available)||!body.events.length||body.results_available>1000)throw new Error('connpass_shape');
+    if(!Array.isArray(body.events)||!Number.isSafeInteger(body.results_available)||!body.events.length||body.results_available<1||body.results_available>1000||body.events.length>100)throw new Error('connpass_shape');
+    if(expected!==undefined&&expected!==body.results_available)throw new Error('connpass_changed');
+    expected=body.results_available;
     for(const raw of body.events){
       const normalized=normalizeEvent(raw),previous=known.get(raw.id);
       let image={thumbnailKey:previous?.thumbnailKey,thumbnailFingerprint:previous?.thumbnailFingerprint};
@@ -40,12 +45,18 @@ export async function syncEvents(env:Env & {CONNPASS_API_KEY?:string}, now:numbe
       }else image={thumbnailKey:undefined,thumbnailFingerprint:undefined};
       incoming.push({...normalized,...image} as Event);
     }
-    if(start+body.events.length>body.results_available)break;
+    if(incoming.length===expected)break;
+    if(body.events.length!==100)throw new Error('connpass_incomplete');
     await new Promise(resolve=>setTimeout(resolve,1100));
   }
+  if(incoming.length!==expected||new Set(incoming.map(e=>e.id)).size!==expected)throw new Error('connpass_incomplete');
   const timestamp=new Date(now).toISOString();
   // Complete validation before the atomic replacement of received rows. Never clear known events on an API failure.
   await env.REPORT_DB.batch([...incoming.map(event=>env.REPORT_DB.prepare('INSERT INTO public_events(id,data,updated_at) VALUES(?,?,?) ON CONFLICT(id) DO UPDATE SET data=excluded.data,updated_at=excluded.updated_at').bind(event.id,JSON.stringify(event),timestamp)),env.REPORT_DB.prepare("INSERT INTO jobs(name,last_success) VALUES('connpass',?) ON CONFLICT(name) DO UPDATE SET last_success=excluded.last_success,last_error=NULL").bind(timestamp)]);
+  }catch{
+    await env.REPORT_DB.prepare("UPDATE jobs SET last_error='sync_failed' WHERE name='connpass' AND token=?").bind(token).run();
+    throw new Error('connpass_sync_failed');
+  }
 }
 export async function readSource(db:D1Database,event:Event, all:Event[]) {
   const date=new Intl.DateTimeFormat('sv-SE',{timeZone:'Asia/Tokyo'}).format(new Date(event.startsAt));
@@ -71,7 +82,6 @@ export async function runScheduled(env:Env & {CONNPASS_API_KEY?:string},now=Date
   if(lease?.token!==token)return;
   let failures=0;
   try {
-    try{await syncEvents(env,now);}catch{failures++;console.error(JSON.stringify({job:'connpass',error:'sync_failed'}));await env.REPORT_DB.prepare("INSERT INTO jobs(name,last_error) VALUES('connpass','sync_failed') ON CONFLICT(name) DO UPDATE SET last_error=excluded.last_error").run();}
     const all=await events(env.REPORT_DB);
     const targets=all.filter(event=>event.status!=='cancelled'&&eligible(event.endsAt,now,env.REPORTS_START_DATE,event.startsAt));
     if(targets.length>100)throw new Error('event_limit');
