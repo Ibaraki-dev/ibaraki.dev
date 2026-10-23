@@ -1,5 +1,5 @@
-export type Source = { plans: string[]; results: string[]; materials: {title: string; url: string}[] };
-export type Report = { plans: string[]; results: string[]; materials: {title: string; url: string}[] };
+export type Source = { participantCount?: number; plans: string[]; results: string[]; materials: {title: string; url: string}[] };
+export type Report = { participantCount?: number; plans: string[]; results: string[]; materials: {title: string; url: string}[] };
 export const MODEL = '@cf/meta/llama-3.3-70b-instruct-fp8-fast';
 export const VERSION = '2';
 const privatePattern = /非公開|公開不可|社外秘|confidential|do not publish|password\s*[:=]|api[_ -]?key\s*[:=]|(?:ghp_|sk-)[a-zA-Z0-9]{10}/i;

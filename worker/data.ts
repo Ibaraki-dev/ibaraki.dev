@@ -70,6 +70,8 @@ export async function readSource(db:D1Database,event:Event, all:Event[]) {
   const plans=await db.prepare('SELECT c.todo FROM checkins c JOIN events_to_checkins ec ON ec.checkin_id=c.id WHERE ec.event_id=? ORDER BY c.id LIMIT 201').bind(id).all<{todo:string}>();
   const results=await db.prepare('SELECT content FROM checkouts co WHERE co.date=? AND EXISTS (SELECT 1 FROM checkins c JOIN events_to_checkins ec ON ec.checkin_id=c.id WHERE ec.event_id=? AND c.user_id=co.user_id) ORDER BY co.id LIMIT 201').bind(date,id).all<{content:string}>();
   const source=prepareSource(plans.results.map(r=>r.todo),results.results.map(r=>r.content));
+  const attendance=await db.prepare('SELECT COUNT(DISTINCT c.user_id) AS count FROM checkins c JOIN events_to_checkins ec ON ec.checkin_id=c.id WHERE ec.event_id=?').bind(id).first<{count:number}>();
+  source.participantCount=attendance?.count ?? 0;
   const candidates=publicMaterialCandidates([...plans.results.map(r=>r.todo),...results.results.map(r=>r.content)]);
   for(const material of candidates){
     // Only anonymous, direct HTTPS 200 responses on the fixed host allowlist. No redirects or credentials.
@@ -97,7 +99,7 @@ export async function runScheduled(env:Env & {CONNPASS_API_KEY?:string},now=Date
         // Hide stale content before regenerating, including a deletion or newly private source.
         await env.REPORT_DB.prepare("UPDATE reports SET status='pending',body=NULL,updated_at=? WHERE event_id=? AND status!='withdrawn' AND EXISTS(SELECT 1 FROM jobs WHERE name='reports' AND token=?)").bind(timestamp,event.id,token).run();
         if(!source || (!source.plans.length&&!source.results.length))continue;
-        const report=await summarize(env.AI,source);
+        const report={...await summarize(env.AI,source),participantCount:source.participantCount};
         // Source edits during generation and expired leases must never publish stale output.
         const refreshed=await readSource(env.BOT_DB,event,all);
         if(!refreshed || await sourceHash(refreshed)!==hash)throw new Error('source_changed');

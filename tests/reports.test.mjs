@@ -134,3 +134,13 @@ test('structured AI responses reject malformed or unsafe output',async()=>{
  await assert.rejects(()=>summarize(respond({plans:[],results:[]}),source),/empty_summary/);
  await assert.rejects(()=>summarize({async run(){return {error:'failed'};}},source),/invalid_ai_response/);
 });
+
+test('attendance counts distinct event members, not check-ins or AI guesses',async()=>{
+ const f=fixture();
+ f.env.BOT_DB.db.exec("INSERT INTO checkins VALUES(3,1,'TypeScriptの勉強',''),(4,99,'other','');INSERT INTO events_to_checkins VALUES(23,3),(24,4)");
+ const source=await readSource(f.env.BOT_DB,f.event,[f.event]);assert.equal(source.participantCount,2);
+ const original=f.env.AI.run;f.env.AI.run=async(...args)=>{const result=await original(...args);result.response.participantCount=999;return result;};
+ await runScheduled(f.env);assert.equal(JSON.parse(f.report().body).participantCount,2);
+ f.env.BOT_DB.db.exec("INSERT INTO checkins VALUES(5,3,'TypeScriptの勉強','');INSERT INTO events_to_checkins VALUES(23,5)");
+ await runScheduled(f.env);assert.equal(JSON.parse(f.report().body).participantCount,3);assert.equal(f.calls(),2);
+});
