@@ -1,3 +1,4 @@
+import {CONNPASS_USER_AGENT} from './connpass-client.mjs';
 import {readFile,writeFile,rename} from 'node:fs/promises';
 import {setTimeout as sleep} from 'node:timers/promises';
 import {normalizeEvent,mergeEvents,SUBDOMAIN} from './events.mjs';
@@ -12,7 +13,7 @@ while(start<=total){
  url.search=new URLSearchParams({subdomain:SUBDOMAIN,count:'100',start:String(start),order:'2'}).toString();
  let response;
  for(let attempt=0;attempt<3;attempt++){
-  response=await fetch(url,{headers:{'X-API-Key':key},signal:AbortSignal.timeout(20000)});
+  response=await fetch(url,{headers:{'X-API-Key':key,'User-Agent':CONNPASS_USER_AGENT},redirect:'manual',signal:AbortSignal.timeout(20000)});
   if(response.status!==429&&response.status<500)break;
   if(attempt<2)await sleep(Math.min(30000,Math.max(2000,Number(response.headers.get('Retry-After')||2)*1000)));
  }

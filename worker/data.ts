@@ -1,3 +1,4 @@
+import {CONNPASS_USER_AGENT} from '../scripts/connpass-client.mjs';
 import seed from '../src/data/events.json' with {type:'json'};
 import {storeEventImage} from '../scripts/event-images.mjs';
 import {normalizeEvent,mergeEvents} from '../scripts/events.mjs';
@@ -28,7 +29,7 @@ export async function syncEvents(env:Env & {CONNPASS_API_KEY?:string}, now:numbe
   for(let start=1;start<=1000;start+=100){
     const url=new URL('https://connpass.com/api/v2/events/');
     for(const [k,v] of Object.entries({subdomain:'mito-web-engineer',count:'100',start:String(start),order:'2'}))url.searchParams.set(k,v);
-    const response=await fetch(url,{headers:{'X-API-Key':env.CONNPASS_API_KEY},signal:AbortSignal.timeout(20000),redirect:'manual'});
+    const response=await fetch(url,{headers:{'X-API-Key':env.CONNPASS_API_KEY,'User-Agent':CONNPASS_USER_AGENT},signal:AbortSignal.timeout(20000),redirect:'manual'});
     const body=await boundedJson(response);
     if(!Array.isArray(body.events)||!Number.isSafeInteger(body.results_available)||!body.events.length||body.results_available<1||body.results_available>1000||body.events.length>100)throw new Error('connpass_shape');
     if(expected!==undefined&&expected!==body.results_available)throw new Error('connpass_changed');

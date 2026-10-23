@@ -97,7 +97,7 @@ test('an expired worker cannot hide or overwrite a newer publication',async()=>{
 
 test('API failure is sanitized and only attempted once per day',async(t)=>{
  const {env}=fixture();env.CONNPASS_API_KEY='fixture-key';let calls=0;
- t.mock.method(globalThis,'fetch',async(_url,options)=>{calls++;assert.equal(options.headers['X-API-Key'],'fixture-key');assert.equal(options.redirect,'manual');return new Response('secret upstream details',{status:401});});
+ t.mock.method(globalThis,'fetch',async(_url,options)=>{calls++;assert.equal(options.headers['X-API-Key'],'fixture-key');assert.match(options.headers['User-Agent'],/^ibaraki\.dev-event-sync\/1\.0/);assert.equal(options.redirect,'manual');return new Response('secret upstream details',{status:401});});
  const before=JSON.stringify(env.REPORT_DB.db.prepare('SELECT * FROM public_events').all());const now=Date.now();
  await assert.rejects(()=>syncEvents(env,now),/connpass_sync_failed/);await syncEvents(env,now+1);assert.equal(calls,1);
  assert.equal(JSON.stringify(env.REPORT_DB.db.prepare('SELECT * FROM public_events').all()),before);

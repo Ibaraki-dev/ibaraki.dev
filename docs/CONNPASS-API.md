@@ -14,6 +14,16 @@ Secret未設定時は同期しません。`jobs`テーブルの`connpass`行で`
 
 ## 接続検証（2026-10-23）
 
-Worker Secret の登録を確認済み。リモートWorkerから公式APIへアクセスするとCloudFrontのHTML形式のHTTP403が返るため、取得成功・キーの有効性は未確認。connpass側へCloudflare WorkersからのAPIアクセスを確認する必要がある。失敗した日のデータは更新されず、次回の日次同期まで保持する。
+登録済みのSecretを用いてCloudflare上で比較した結果:
+
+| 条件 | 結果 |
+| --- | --- |
+| 手元のPythonと同じURL（count=1）、User-Agent明示なし | CloudFront HTML 403 |
+| 通常のWorker URL（count=100、start=1）、User-Agent明示なし | CloudFront HTML 403 |
+| 同じSecret・count=1、実際のアプリを示すUser-Agentを明示 | JSON 200、総数81件 |
+
+手元のPythonは標準で `Python-urllib/3.9` を付ける。一方、以前のWorkerコードにはUser-Agent指定がなかった。現在は `scripts/connpass-client.mjs` の `ibaraki.dev-event-sync/1.0` をAPI・画像取得に付ける。ブラウザや他クライアントの偽装は行わない。
+
+修正後に81イベントをD1に同期し、81件の画像参照（重複を除き4画像）と最新イベントの申込人数5人を確認。以前の「CloudflareからのAPIアクセス全般が制限される」という推測は、この結果により訂正する。キーは有効で、接続元変更やconnpassへの許可依頼は不要だった。
 
 Workersのfetchは`redirect: 'manual'`を使用し、3xxをエラーとして扱う。APIキーをリダイレクト先へ送信しない。
