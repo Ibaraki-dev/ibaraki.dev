@@ -2,7 +2,7 @@ import test from 'node:test';
 import assert from 'node:assert/strict';
 import {DatabaseSync} from 'node:sqlite';
 import {readFileSync} from 'node:fs';
-import {prepareSource,validateReport,sourceHash,eligible,publicMaterialCandidates,sanitize} from '../worker/report.ts';
+import {prepareSource,validateReport,sourceHash,eligible,publicMaterialCandidates,sanitize,summarize} from '../worker/report.ts';
 import {readSource,runScheduled,syncEvents} from '../worker/data.ts';
 // Execute production SQL against SQLite. Only the network and AI are stubbed.
 class D1 {
@@ -17,7 +17,7 @@ function fixture(){
  const event={id:406885,title:'Ibaraki.dev #21 もくもく会',number:'21',startsAt:'2026-10-17T09:00:00+09:00',endsAt:'2026-10-17T10:00:00+09:00',url:'https://mito-web-engineer.connpass.com/event/406885/',place:'水戸',tags:['もくもく会'],summary:''};
  REPORT_DB.db.prepare('INSERT INTO public_events VALUES(?,?,?)').run(event.id,JSON.stringify(event),new Date().toISOString());
  let calls=0;
- const env={BOT_DB,REPORT_DB,REPORTS_START_DATE:'2026-10-17',AI:{async run(_model,{messages}){calls++;const source=JSON.parse(messages[1].content);assert.ok(!messages[1].content.includes('SECRET'));return {choices:[{finish_reason:"stop",message:{content:JSON.stringify(source)}}]};}}};
+ const env={BOT_DB,REPORT_DB,REPORTS_START_DATE:'2026-10-17',AI:{async run(_model,{messages}){calls++;const source=JSON.parse(messages[1].content);assert.ok(!messages[1].content.includes('SECRET'));return {response:source};}}};
  return {env,event,calls:()=>calls,report:()=>REPORT_DB.db.prepare('SELECT * FROM reports WHERE event_id=406885').get()};
 }
 test('redacts metadata-like content; entire private records excluded',()=>{
@@ -110,4 +110,27 @@ test('API incomplete or duplicate results never publish partial data',async(t)=>
  t.mock.method(globalThis,'fetch',async()=>Response.json({results_available:2,events:rows}));
  await assert.rejects(()=>syncEvents(env,Date.now()));assert.equal(env.REPORT_DB.db.prepare('SELECT COUNT(*) AS n FROM public_events').get().n,1);
  }
+});
+
+test('AI schema enforces publication limits, including empty input, without weakening validation',async()=>{
+ const source={plans:['型の学習'],results:[],materials:[]};
+ const ai={async run(_model,request){
+  const schema=request.response_format.json_schema;
+  assert.deepEqual(schema.properties.plans,{type:'array',minItems:1,maxItems:8,items:{type:'string',minLength:1,maxLength:240}});
+  assert.equal(schema.properties.results.maxItems,0);assert.equal(schema.additionalProperties,false);
+  return {response:{plans:['型の学習'],results:[]}};
+ }};
+ assert.deepEqual(await summarize(ai,source),source);
+ assert.throws(()=>validateReport({plans:Array(9).fill('型の学習'),results:[]},source),/invalid_report_count/);
+ assert.throws(()=>validateReport({plans:['型の学習'],results:['完成']},source),/invalid_report_invented/);
+ assert.throws(()=>validateReport({plans:['あ'.repeat(241)],results:[]},source),/unsafe_report/);
+});
+test('structured AI responses reject malformed or unsafe output',async()=>{
+ const source={plans:['型の学習'],results:[],materials:[]};
+ const respond=response=>({async run(){return {response};}});
+ assert.deepEqual(await summarize(respond(JSON.stringify({plans:['型の学習'],results:[]})),source),source);
+ await assert.rejects(()=>summarize(respond('not json'),source),/invalid_ai_json/);
+ await assert.rejects(()=>summarize(respond({plans:['contact@example.com'],results:[]}),source),/unsafe_report/);
+ await assert.rejects(()=>summarize(respond({plans:[],results:[]}),source),/empty_summary/);
+ await assert.rejects(()=>summarize({async run(){return {error:'failed'};}},source),/invalid_ai_response/);
 });
