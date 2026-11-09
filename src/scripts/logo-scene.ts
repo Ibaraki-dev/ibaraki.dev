@@ -1,7 +1,15 @@
+import {bindSceneLifecycle} from './scene-lifecycle';
 import logo from '../../public/logo.svg?raw';
 const host=document.querySelector<HTMLElement>('.logo-scene');
 const reduced=matchMedia('(prefers-reduced-motion: reduce)');
-if(host&&!reduced.matches) void init(host);
+let activeDispose:(()=>void)|undefined;
+let initializing=false;
+async function start(){if(!host||reduced.matches||initializing||activeDispose)return;initializing=true;try{await init(host);}finally{initializing=false;}}
+if(host){
+ host.querySelector('canvas')?.addEventListener('webglcontextrestored',()=>{void start();});
+ reduced.addEventListener('change',()=>{if(reduced.matches){activeDispose?.();window.dispatchEvent(new Event('logo-ready'));}else void start();});
+}
+if(host&&!reduced.matches) void start();
 else window.dispatchEvent(new Event('logo-ready'));
 async function init(host:HTMLElement){
 try{
@@ -152,7 +160,7 @@ function render(now:number){
  group.position.x=currentX*.065*response;group.position.y=-.07-currentY*.025*response;
  composer.render();
  if(host.dataset.ready!=='true'){
-  host.dataset.ready='true';window.dispatchEvent(new Event('logo-ready'));
+  host.dataset.ready='true';try{sessionStorage.setItem('ibaraki-logo-rendered','true');}catch{}window.dispatchEvent(new Event('logo-ready'));
   // Also works if loading already ended via the bounded fallback.
   if(!document.documentElement.dataset.loading)beginAssembly();
  }
@@ -171,7 +179,11 @@ function move(e:PointerEvent){
 }
 function leave(){pointerX=pointerY=0;request();}function visibility(){lastFrame=motionFrame=0;if(document.hidden){pointerX=pointerY=0;}else request();}
 interaction.addEventListener('pointermove',move,{passive:true});interaction.addEventListener('pointerleave',leave);window.addEventListener('blur',leave);document.addEventListener('visibilitychange',visibility);
-function dispose(){if(disposed)return;disposed=true;cancelAnimationFrame(frame);resize.disconnect();intersection.disconnect();interaction.removeEventListener('pointermove',move);interaction.removeEventListener('pointerleave',leave);window.removeEventListener('blur',leave);document.removeEventListener('visibilitychange',visibility);window.removeEventListener('themechange',updateTheme);window.removeEventListener('logo-reveal',beginAssembly);host.dataset.ready='false';for(const p of meshes){p.mesh.geometry.dispose();for(const child of p.mesh.children){const line=child as InstanceType<typeof THREE.LineLoop>;line.geometry.dispose();(line.material as InstanceType<typeof THREE.Material>).dispose();}for(const mat of p.mesh.material as InstanceType<typeof THREE.Material>[])mat.dispose();}for(const pool of pools){pool.geometry.dispose();(pool.material as InstanceType<typeof THREE.Material>).dispose();}mirror.dispose();mirrorGeometry.dispose();floorGeometry.dispose();floorMaterial.dispose();light.shadow.map?.dispose();env.dispose();for(const pass of composer.passes)pass.dispose();composer.dispose();renderer.dispose();}
-canvas.addEventListener('webglcontextlost',(event)=>{event.preventDefault();dispose();},{once:true});window.addEventListener('pagehide',dispose,{once:true});reduced.addEventListener('change',()=>{if(reduced.matches)dispose();});request();
+function pause(){cancelAnimationFrame(frame);frame=0;lastFrame=motionFrame=0;pointerX=pointerY=0;}
+function resume(){if(disposed)return;lastFrame=motionFrame=0;visible=true;updateTheme();request();}
+const unbindLifecycle=bindSceneLifecycle(window,{pause,resume,dispose});
+function lost(event:Event){event.preventDefault();dispose();window.dispatchEvent(new Event('logo-ready'));}
+function dispose(){if(disposed)return;disposed=true;activeDispose=undefined;unbindLifecycle();canvas.removeEventListener('webglcontextlost',lost);cancelAnimationFrame(frame);resize.disconnect();intersection.disconnect();interaction.removeEventListener('pointermove',move);interaction.removeEventListener('pointerleave',leave);window.removeEventListener('blur',leave);document.removeEventListener('visibilitychange',visibility);window.removeEventListener('themechange',updateTheme);window.removeEventListener('logo-reveal',beginAssembly);host.dataset.ready='false';for(const p of meshes){p.mesh.geometry.dispose();for(const child of p.mesh.children){const line=child as InstanceType<typeof THREE.LineLoop>;line.geometry.dispose();(line.material as InstanceType<typeof THREE.Material>).dispose();}for(const mat of p.mesh.material as InstanceType<typeof THREE.Material>[])mat.dispose();}for(const pool of pools){pool.geometry.dispose();(pool.material as InstanceType<typeof THREE.Material>).dispose();}mirror.dispose();mirrorGeometry.dispose();floorGeometry.dispose();floorMaterial.dispose();light.shadow.map?.dispose();env.dispose();for(const pass of composer.passes)pass.dispose();composer.dispose();renderer.dispose();}
+activeDispose=dispose;canvas.addEventListener('webglcontextlost',lost);request();
 }catch(error){console.warn('Logo renderer unavailable',error);host.dataset.ready='false';window.dispatchEvent(new Event('logo-ready'));}
 }

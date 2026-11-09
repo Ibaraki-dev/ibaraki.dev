@@ -61,6 +61,8 @@ const structuredData={
   const root = document.documentElement;
   root.dataset.loading = 'true';
   const started = performance.now();
+  let minimumLoading = 700;
+  try { if (sessionStorage.getItem('ibaraki-logo-rendered') === 'true') minimumLoading = 0; } catch {}
   let finished = false;
   let fallback;
   function reveal() {
@@ -68,7 +70,7 @@ const structuredData={
     finished = true;
     clearTimeout(fallback);
     window.removeEventListener('logo-ready', reveal);
-    setTimeout(() => { delete root.dataset.loading; window.dispatchEvent(new Event('logo-reveal')); }, Math.max(0, 700 - (performance.now() - started)));
+    setTimeout(() => { delete root.dataset.loading; window.dispatchEvent(new Event('logo-reveal')); }, Math.max(0, minimumLoading - (performance.now() - started)));
   }
   window.addEventListener('logo-ready', reveal);
   fallback = setTimeout(reveal, 6500);

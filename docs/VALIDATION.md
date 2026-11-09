@@ -112,3 +112,11 @@ Deployment2482dd22-6d68-4778-add5-22771f0314f0.
 - 本番：公開イベント9件、公開レポート0件の初期待機状態。初回は2026-10-17開催終了後18:35以降。過去分の公開なし。
 - connpass APIキー未登録のため、本番のAPI取得は未検証・未有効。モックによる成功/失敗は検証済み。
 - Botのコード・本番DBのスキーマやデータは変更していない。公開側の新規D1にのみマイグレーションを適用。
+
+## 2026-11-09: 3D logo history navigation
+
+- A persisted `pagehide` now pauses rendering without disposing GPU resources; persisted `pageshow` resumes the same scene. A real unload still releases resources.
+- WebGL context restoration rebuilds the scene, including its generated reflection environment. Reduced-motion changes release/recreate the scene as appropriate.
+- After the first successful frame, subsequent loads in the same tab skip the artificial 700 ms loader minimum. Hashed `/_astro/` assets use a one-year immutable browser cache. Dynamic HTML and event data remain uncached.
+- The browser controls whether a history entry and its GPU context survive. A fresh document or discarded context must initialize WebGL again; this is not a persistent GPU cache.
+- Added repeated back/forward lifecycle and real-unload regression tests. Local browser verification was unavailable because browser use was disabled in the app settings.
